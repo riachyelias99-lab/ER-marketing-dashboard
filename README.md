@@ -76,7 +76,8 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 - **GitHub Actions + Vercel:** free, no server to maintain, and Git history doubles as the audit log of every daily run.
 - **Plain HTML + Chart.js, no framework:** fewer moving parts and every file readable. Chart.js is pinned to 4.4.1.
 - **The API key lives only in GitHub Secrets** (and in a local, git-ignored `.env`). An automated test fails if a key pattern appears in any committable file.
-- **Charts:** a validated colour-blind-safe palette. The pipeline chart puts "Closed" first against the axis (the only directly comparable segment) and has a table view. No pie charts.
+- **Charts:** colour means something: green = won, blues = still moving, greys = dead ends; "Closed" sits first against the axis (the only directly comparable segment); every chart has labels or a table view. No pie charts.
+- **The pipeline is pinned by its id**, not just its name, because anyone in the shared sandbox could create another "Sales Pipeline".
 
 ## Data quality results (current data)
 
@@ -95,7 +96,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 ## Running it locally
 
 ```bash
-npm test                                         # 81 automated tests
+npm test                                         # run all automated tests
 npm run pipeline:local                           # live run against GHL (needs .env with GHL_API_KEY, GHL_LOCATION_ID)
 node pipeline/run.mjs --from-file recon/raw      # run from saved downloads instead of calling GHL
 npm run pipeline:raw                             # "Stage 1": uncleaned version → open http://localhost:8080/?raw=1
