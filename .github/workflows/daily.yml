@@ -1,0 +1,54 @@
+name: Daily dashboard update
+
+on:
+  schedule:
+    # 04:00 UTC = 06:00 in Beirut in winter (UTC+2), 07:00 in summer (UTC+3).
+    # GitHub may start scheduled runs a few minutes late.
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    inputs:
+      simulate_failure:
+        description: 'Simulate a broken day (pretend GHL sent only half the contacts) — for demos only'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # A broken rule must never publish: tests run first.
+      - name: Run tests
+        run: npm test
+
+      - name: Fetch, validate, clean and calculate
+        run: node pipeline/run.mjs
+        env:
+          GHL_API_KEY: ${{ secrets.GHL_API_KEY }}
+          GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
+          SIMULATE_FAILURE: ${{ inputs.simulate_failure || 'false' }}
+
+      - name: Publish (commit the new data files)
+        run: |
+          if [ -z "$(git status --porcelain public/data)" ]; then
+            echo "No data changes."
+            exit 0
+          fi
+          RESULT=$(node -p "require('./public/data/status.json').result")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data
+          git commit -m "data: update $(date -u +%F) (${RESULT})"
+          git push
