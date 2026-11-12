@@ -1,0 +1,15 @@
+{
+  "name": "er-marketing-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Daily, self-validating marketing performance dashboard built from GoHighLevel data.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test test/",
+    "pipeline": "node pipeline/run.mjs",
+    "pipeline:local": "node --env-file=.env pipeline/run.mjs",
+    "pipeline:raw": "node pipeline/run.mjs --from-file recon/raw --raw --out public/data-raw",
+    "preview": "python -m http.server 8080 -d public"
+  }
+}
