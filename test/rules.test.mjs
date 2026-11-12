@@ -121,3 +121,16 @@ test('each record removed once; waterfall sums', () => {
   assert.equal(r.waterfall.at(-1).remaining, r.kept.length);
   for (let i = 1; i < r.waterfall.length; i++) assert.equal(r.waterfall[i].remaining, r.waterfall[i - 1].remaining - r.waterfall[i].removed);
 });
+
+test('resolveCtx: the pinned agency pipeline id wins over a same-named impostor', async () => {
+  const { AGENCY_PIPELINE_ID } = await import('../pipeline/config.mjs');
+  const raw = makeRaw();
+  raw.pipelines = [{ id: 'impostor', name: 'Sales Pipeline', stages: [] }, { ...raw.pipelines[0], id: AGENCY_PIPELINE_ID }];
+  assert.equal(resolveCtx(raw).pipelineId, AGENCY_PIPELINE_ID);
+});
+
+test('resolveCtx: two pipelines named "Sales Pipeline" without the pinned id → ambiguous → null', () => {
+  const raw = makeRaw();
+  raw.pipelines = [raw.pipelines[0], { ...raw.pipelines[0], id: 'copy' }];
+  assert.equal(resolveCtx(raw), null);
+});

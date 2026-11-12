@@ -22,6 +22,7 @@ function parseArgs(argv, env) {
   const value = flag => { const i = argv.indexOf(flag); return i >= 0 ? argv[i + 1] : null; };
   return {
     fromFile: value('--from-file'),
+    outGiven: value('--out') !== null,
     out: value('--out') ?? 'public/data',
     raw: argv.includes('--raw'),
     simulateFailure: argv.includes('--simulate-failure') || String(env.SIMULATE_FAILURE).toLowerCase() === 'true',
@@ -47,7 +48,11 @@ const pausedNote = lastSuccess => (lastSuccess
 
 export async function run({ argv = [], env = {}, now = new Date(), fetchImpl = fetch }) {
   const opts = parseArgs(argv, env);
+  if (opts.raw && !opts.outGiven) throw new Error('--raw needs --out <folder>: the uncleaned preview must never overwrite the live data in public/data');
   const iso = now.toISOString();
+  // Belt and braces: whatever ends up in a committed file never contains the secrets.
+  const secrets = [env.GHL_API_KEY, env.GHL_LOCATION_ID].filter(s => s && s.length >= 4);
+  const redact = text => secrets.reduce((t, s) => t.split(s).join('<redacted>'), String(text));
   const today = beirutDay(now);
   const files = {
     latest: path.join(opts.out, 'latest.json'),
@@ -59,9 +64,9 @@ export async function run({ argv = [], env = {}, now = new Date(), fetchImpl = f
 
   const fail = (notes, checks = []) => {
     const lastSuccess = prevStatus?.lastSuccess ?? null;
-    const status = { lastAttempt: iso, lastSuccess, result: 'fail', notes: [pausedNote(lastSuccess), ...notes] };
+    const status = { lastAttempt: iso, lastSuccess, result: 'fail', notes: [pausedNote(lastSuccess), ...notes.map(redact)] };
     writeJson(files.status, status);
-    writeJson(files.history, { status, checks });
+    writeJson(files.history, { status, checks: checks.map(c => ({ ...c, message: redact(c.message) })) });
     return { result: 'fail', latestWritten: false };
   };
 
@@ -75,6 +80,14 @@ export async function run({ argv = [], env = {}, now = new Date(), fetchImpl = f
   }
   if (opts.simulateFailure) raw = { ...raw, contacts: raw.contacts.slice(0, Math.ceil(raw.contacts.length / 2)) };
 
+  // Any unexpected error from here on still produces a "paused" note instead of a silently stale page.
+  try {
+    return publish(raw);
+  } catch (err) {
+    return fail([`The update stopped unexpectedly (${err.message})`], [{ id: 'CRASH', level: 'fail', ok: false, message: err.message }]);
+  }
+
+  function publish(raw) {
   // 2–4. Validate, clean, calculate
   const ctx = resolveCtx(raw);
   if (!ctx) return fail(['The "Sales Pipeline" was not found in GHL'], [{ id: 'B2', level: 'fail', ok: false, message: 'Sales Pipeline missing' }]);
@@ -113,6 +126,7 @@ export async function run({ argv = [], env = {}, now = new Date(), fetchImpl = f
   writeJson(files.status, status);
   writeJson(files.history, { status, waterfall: clean.waterfall, removedIds: removed.map(r => r.id), ignoredIds: ignoredValues.map(v => v.id), checks: health.checks });
   return { result: health.result, latestWritten: true };
+  }
 }
 
 // CLI entry. Prints only counts and messages — never the key or location id.

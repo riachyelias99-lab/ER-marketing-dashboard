@@ -71,3 +71,26 @@ test('never leaks key or location in errors', async () => {
     return true;
   });
 });
+
+test('network/header errors never contain the key', async () => {
+  const impl = async () => { throw new TypeError(`Headers.append: "Bearer ${KEY}" is an invalid header value.`); };
+  await assert.rejects(fetchAll({ apiKey: KEY, locationId: LOC, fetchImpl: impl, sleep: noSleep }), err => {
+    assert.ok(!err.message.includes(KEY), err.message);
+    assert.match(err.message, /GHL request failed/);
+    return true;
+  });
+});
+
+test('rejects a key containing whitespace or control characters without echoing it', async () => {
+  const { impl, calls } = fakeGhl();
+  await assert.rejects(fetchAll({ apiKey: `${KEY}\n`, locationId: LOC, fetchImpl: impl, sleep: noSleep }), err => {
+    assert.ok(!err.message.includes(KEY));
+    return true;
+  });
+  assert.equal(calls.length, 0);
+});
+
+test('missing meta.total is treated as an error, not as complete', async () => {
+  const { impl } = fakeGhl({ '/opportunities/search': () => ok({ opportunities: range(100, 'o') }) });
+  await assert.rejects(fetchAll({ apiKey: KEY, locationId: LOC, fetchImpl: impl, sleep: noSleep }), /total/);
+});

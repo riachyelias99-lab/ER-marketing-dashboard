@@ -62,6 +62,8 @@ async function main() {
     return;
   }
 
+  // Safety net: uncleaned data is always labelled, however it got here.
+  if (latest.mode === 'raw') document.getElementById('raw-banner').hidden = false;
   const today = beirutDay(new Date());
   R.renderTopBar(latest, status);
   R.renderInsights('advice-insights', latest.insights.advice);

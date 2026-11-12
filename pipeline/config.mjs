@@ -1,6 +1,8 @@
 // All business constants in one place (spec §7–§10). Change a threshold here, nowhere else.
 
 export const AGENCY_PIPELINE_NAME = 'Sales Pipeline';
+// Pinned because the sandbox is shared: anyone could create another pipeline with the same name.
+export const AGENCY_PIPELINE_ID = 'a5UYvGBOnvtiBm0W6H8D';
 export const AGENCY_TAG = 'dash-project';
 export const EXPECTED_STAGES = [
   'Qualified Opt In', 'Disqualified', 'Booked call', 'Closed',

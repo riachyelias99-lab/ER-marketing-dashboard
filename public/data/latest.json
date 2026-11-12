@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12T20:53:35.497Z",
+  "generatedAt": "2026-11-12T21:09:10.759Z",
   "mode": "clean",
   "stages": [
     "Qualified Opt In",
@@ -1642,7 +1642,7 @@
       "orphanDeals": 0
     },
     "newSuspiciousCount": 0,
-    "newSince": null
+    "newSince": "2026-11-05"
   },
   "health": {
     "result": "pass",
@@ -1658,6 +1658,18 @@
         "level": "fail",
         "ok": true,
         "message": "Sales Pipeline has the expected 8 stages"
+      },
+      {
+        "id": "B3",
+        "level": "fail",
+        "ok": true,
+        "message": "No sudden drop in leads"
+      },
+      {
+        "id": "B4",
+        "level": "warn",
+        "ok": true,
+        "message": "No unfamiliar sources"
       },
       {
         "id": "B5",

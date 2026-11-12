@@ -5,6 +5,13 @@ import { money, pct } from './format.js';
 // "Closed" first: the segment against the axis is the only one whose length compares
 // directly across sources. Then the stages still moving, then the dead ends.
 export const STAGE_ORDER = ['Closed', 'Follow Up', 'Booked call', 'Qualified Opt In', 'Lost', 'No Show', 'Cancelled', 'Disqualified'];
+// Colour = meaning (spec §11): green = won, blues = still moving (darker = further along),
+// greys = dead ends. Individual stages are told apart by the legend, tooltip and table view.
+export const STAGE_COLOR_VAR = {
+  Closed: '--stage-won',
+  'Follow Up': '--stage-moving-3', 'Booked call': '--stage-moving-2', 'Qualified Opt In': '--stage-moving-1',
+  Lost: '--stage-dead-4', 'No Show': '--stage-dead-3', Cancelled: '--stage-dead-2', Disqualified: '--stage-dead-1',
+};
 
 const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 const charts = new Map();
@@ -74,10 +81,10 @@ export function stageChart(canvas, sources) {
   options.scales.y.stacked = true;
   options.plugins.legend = { display: true, position: 'top', align: 'start', labels: { boxWidth: 12, boxHeight: 12, color: css('--text-primary') } };
   options.plugins.tooltip = { mode: 'nearest', intersect: true, callbacks: { label: c => `${c.dataset.label}: ${c.parsed.x} deal${c.parsed.x === 1 ? '' : 's'}` } };
-  const datasets = STAGE_ORDER.map((stage, i) => ({
+  const datasets = STAGE_ORDER.map(stage => ({
     label: stage,
     data: rows.map(s => s.stageCounts[stage] ?? 0),
-    backgroundColor: css(`--series-${i + 1}`),
+    backgroundColor: css(STAGE_COLOR_VAR[stage]),
     borderColor: css('--surface-1'),
     borderWidth: { right: 2 },
     borderSkipped: false,

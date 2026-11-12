@@ -40,7 +40,9 @@ jobs:
           GHL_LOCATION_ID: ${{ secrets.GHL_LOCATION_ID }}
           SIMULATE_FAILURE: ${{ inputs.simulate_failure || 'false' }}
 
+      # always(): even if the run step crashed, commit whatever status it managed to write.
       - name: Publish (commit the new data files)
+        if: always()
         run: |
           if [ -z "$(git status --porcelain public/data)" ]; then
             echo "No data changes."
@@ -51,4 +53,16 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data
           git commit -m "data: update $(date -u +%F) (${RESULT})"
+          git pull --rebase
           git push
+
+      # After the status is published, make a failed health check show as a red run
+      # (GitHub then emails the repo owner).
+      - name: Flag a paused update
+        if: always()
+        run: |
+          RESULT=$(node -p "require('./public/data/status.json').result" 2>/dev/null || echo missing)
+          if [ "$RESULT" = "fail" ]; then
+            echo "::error::Health checks failed — the dashboard is showing the previous day's data."
+            exit 1
+          fi

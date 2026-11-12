@@ -1,7 +1,7 @@
 {
   "status": {
-    "lastAttempt": "2026-11-12T20:53:35.497Z",
-    "lastSuccess": "2026-11-12T20:53:35.497Z",
+    "lastAttempt": "2026-11-12T21:09:10.759Z",
+    "lastSuccess": "2026-11-12T21:09:10.759Z",
     "result": "pass",
     "notes": []
   },
@@ -140,6 +140,18 @@
       "level": "fail",
       "ok": true,
       "message": "Sales Pipeline has the expected 8 stages"
+    },
+    {
+      "id": "B3",
+      "level": "fail",
+      "ok": true,
+      "message": "No sudden drop in leads"
+    },
+    {
+      "id": "B4",
+      "level": "warn",
+      "ok": true,
+      "message": "No unfamiliar sources"
     },
     {
       "id": "B5",

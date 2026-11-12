@@ -86,3 +86,8 @@ test('raw mode applies only A1 and ignores no values', () => {
   assert.equal(r.ignoredValues.length, 0);
   assert.equal(r.leads.length, 7);
 });
+
+test('the most common spelling names the merged source', () => {
+  const r = clean([C({ id: 'v', source: 'facebook ad ' }), C({ id: 'a', source: 'Facebook Ad' }), C({ id: 'b', source: 'Facebook Ad' })]);
+  assert.deepEqual(r.leads.map(l => l.source), ['Facebook Ad', 'Facebook Ad', 'Facebook Ad']);
+});

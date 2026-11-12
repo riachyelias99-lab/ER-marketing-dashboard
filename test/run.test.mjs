@@ -139,3 +139,26 @@ test('real data reproduces the agreed waterfall', { skip: !fs.existsSync(path.jo
   assert.equal(latest.audit.annotations.stageStatusMismatch, 2);
   assert.notEqual(latest.health.result, 'fail');
 });
+
+test('an unexpected crash after fetching writes a fail status (page shows the paused note)', async () => {
+  const { src, out } = tempDirs();
+  await run({ argv: ['--from-file', src, '--out', out], env: {}, now: NOW });
+  fs.writeFileSync(path.join(src, 'pipelines.json'), '{}');           // pipelines missing → would throw
+  const r = await run({ argv: ['--from-file', src, '--out', out], env: {}, now: new Date('2026-11-17T04:00:00.000Z') });
+  assert.equal(r.result, 'fail');
+  assert.equal(read(out, 'status.json').result, 'fail');
+});
+
+test('status notes never contain the key or location id', async () => {
+  const { out } = tempDirs();
+  const env = { GHL_API_KEY: 'pit-TESTONLY-SECRET', GHL_LOCATION_ID: 'LOCSECRET99' };
+  await run({ argv: ['--out', out], env, now: NOW,
+    fetchImpl: async () => { throw new Error(`boom Bearer ${env.GHL_API_KEY} at LOCSECRET99`); } });
+  const text = fs.readFileSync(path.join(out, 'status.json'), 'utf8') + fs.readFileSync(path.join(out, 'history', '2026-11-16.json'), 'utf8');
+  assert.ok(!text.includes('SECRET'), text);
+});
+
+test('--raw refuses to write into the live data folder', async () => {
+  const { src } = tempDirs();
+  await assert.rejects(run({ argv: ['--from-file', src, '--raw'], env: {}, now: NOW }), /--out/);
+});

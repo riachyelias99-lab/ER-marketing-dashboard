@@ -1,11 +1,14 @@
 // Removal rules A1–A5 (spec §7). Each contact is removed by the FIRST rule that
 // catches it, so the waterfall always sums exactly.
-import { AGENCY_PIPELINE_NAME, AGENCY_TAG, FUNNEL_STEPS, RULE_TEXT } from './config.mjs';
+import { AGENCY_PIPELINE_NAME, AGENCY_PIPELINE_ID, AGENCY_TAG, FUNNEL_STEPS, RULE_TEXT } from './config.mjs';
 import { norm, hasWholeWord, emailBaseKey, phoneKey, maskEmail } from './text.mjs';
 
 /** Locate the agency pipeline. Returns null if it no longer exists (health check B2 fails). */
 export function resolveCtx(raw) {
-  const p = raw.pipelines.find(x => norm(x.name) === norm(AGENCY_PIPELINE_NAME));
+  const pipelines = raw.pipelines ?? [];
+  // The pinned id wins; otherwise accept the name only if exactly one pipeline has it.
+  const byName = pipelines.filter(x => norm(x.name) === norm(AGENCY_PIPELINE_NAME));
+  const p = pipelines.find(x => x.id === AGENCY_PIPELINE_ID) ?? (byName.length === 1 ? byName[0] : null);
   if (!p) return null;
   return {
     pipelineId: p.id,

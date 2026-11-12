@@ -15,13 +15,21 @@ const REASON_ZERO_WIN = 'Marked as a sale but the value is $0';
 /** @returns {{ leads, ignoredValues, annotations }} */
 export function buildLeads(kept, ctx, { raw = false } = {}) {
   const annotations = { stageStatusMismatch: 0, unknownSource: 0, extraDeals: 0, orphanDeals: 0 };
-  const canonical = new Map(); // norm(source) → first-seen spelling
-  const canon = s => {
-    const k = norm(s);
-    if (!k) return null;
-    if (!canonical.has(k)) canonical.set(k, String(s).trim().replace(/\s+/g, ' '));
-    return canonical.get(k);
-  };
+  // norm(source) → its most common spelling (ties: alphabetical), so one odd lowercase lead
+  // can't rename a whole channel.
+  const counts = new Map();
+  for (const { contact, opps } of kept) {
+    for (const s of [contact.source, ...opps.map(o => o.source)]) {
+      const k = norm(s);
+      if (!k) continue;
+      const tidy = String(s).trim().replace(/\s+/g, ' ');
+      if (!counts.has(k)) counts.set(k, new Map());
+      counts.get(k).set(tidy, (counts.get(k).get(tidy) ?? 0) + 1);
+    }
+  }
+  const canonical = new Map([...counts].map(([k, spellings]) =>
+    [k, [...spellings].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0]]));
+  const canon = s => canonical.get(norm(s)) ?? null;
   const stageOf = o => ctx.stageNameById.get(o.pipelineStageId);
 
   const leads = kept.map(({ contact, opps }) => {

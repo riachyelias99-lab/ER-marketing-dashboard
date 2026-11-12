@@ -9,18 +9,37 @@ const MAX_ATTEMPTS = 5;
  */
 export async function fetchAll({ apiKey, locationId, fetchImpl = fetch, sleep = ms => new Promise(r => setTimeout(r, ms)) }) {
   if (!apiKey || !locationId) throw new Error('GHL_API_KEY and GHL_LOCATION_ID must be set');
+  // A stray newline/space in a saved secret would make fetch echo the whole header in its error.
+  if (/[\s\x00-\x1f\x7f]/.test(apiKey) || /[\s\x00-\x1f\x7f]/.test(locationId)) {
+    throw new Error('GHL_API_KEY or GHL_LOCATION_ID contains spaces or line breaks — re-save the secret');
+  }
   const headers = { Authorization: `Bearer ${apiKey}`, Version: '2021-07-28', Accept: 'application/json' };
 
   async function get(url) {
+    const where = new URL(url).pathname;
     for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
-      const res = await fetchImpl(url, { method: 'GET', headers });
-      if (res.status === 429) { await sleep(2000 * (attempt + 1)); continue; }
+      let res;
+      try {
+        res = await fetchImpl(url, { method: 'GET', headers });
+      } catch {
+        // Never forward the original message: it can contain the Authorization header.
+        throw new Error(`GHL request failed: ${where}`);
+      }
+      if (res.status === 429) {
+        if (attempt < MAX_ATTEMPTS - 1) await sleep(2000 * (attempt + 1));
+        continue;
+      }
       // Only the path goes into errors: the query string carries the location id.
       if (!res.ok) throw new Error(`GHL ${res.status} ${new URL(url).pathname}`);
       return JSON.parse(await res.text());
     }
-    throw new Error(`GHL 429 ${new URL(url).pathname} (still rate-limited after ${MAX_ATTEMPTS} attempts)`);
+    throw new Error(`GHL 429 ${where} (still rate-limited after ${MAX_ATTEMPTS} attempts)`);
   }
+  const totalOf = (page, what) => {
+    const t = page.meta?.total;
+    if (!Number.isFinite(t)) throw new Error(`GHL did not report a total for ${what}, so completeness can't be checked`);
+    return t;
+  };
 
   const { pipelines } = await get(`${BASE}/opportunities/pipelines?locationId=${locationId}`);
 
@@ -29,7 +48,7 @@ export async function fetchAll({ apiKey, locationId, fetchImpl = fetch, sleep = 
   for (let url = `${BASE}/contacts/?locationId=${locationId}&limit=100`; url;) {
     const page = await get(url);
     contacts.push(...page.contacts);
-    contactTotal = page.meta?.total ?? contacts.length;
+    contactTotal = totalOf(page, 'contacts');
     url = page.contacts.length && page.meta?.nextPageUrl ? page.meta.nextPageUrl : null;
   }
 
@@ -38,7 +57,7 @@ export async function fetchAll({ apiKey, locationId, fetchImpl = fetch, sleep = 
   for (let p = 1; ; p++) {
     const page = await get(`${BASE}/opportunities/search?location_id=${locationId}&limit=100&page=${p}`);
     opportunities.push(...page.opportunities);
-    oppTotal = page.meta?.total ?? opportunities.length;
+    oppTotal = totalOf(page, 'deals');
     if (!page.opportunities.length || opportunities.length >= oppTotal) break;
   }
 

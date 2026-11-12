@@ -62,3 +62,8 @@ test('consistency failure fails the run', () => {
   assert.equal(r.result, 'fail');
   assert.equal(check(r, 'CONSISTENCY').ok, false);
 });
+
+test('B4 ignores spelling differences of a known source', () => {
+  const r = runHealthChecks(input({ sources: ['referral ', 'Billboard'] }));
+  assert.equal(check(r, 'B4').ok, true);
+});
