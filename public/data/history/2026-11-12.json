@@ -1,0 +1,157 @@
+{
+  "status": {
+    "lastAttempt": "2026-11-12T20:53:35.497Z",
+    "lastSuccess": "2026-11-12T20:53:35.497Z",
+    "result": "pass",
+    "notes": []
+  },
+  "waterfall": [
+    {
+      "rule": "START",
+      "label": "All contacts in the sandbox",
+      "reason": "Everything downloaded from GoHighLevel",
+      "removed": 0,
+      "remaining": 420
+    },
+    {
+      "rule": "A1",
+      "label": "Not this agency's",
+      "reason": "Belongs to another user of the shared sandbox",
+      "removed": 65,
+      "remaining": 355
+    },
+    {
+      "rule": "A2",
+      "label": "Demo record",
+      "reason": "Marked as demo data, not a real lead",
+      "removed": 33,
+      "remaining": 322
+    },
+    {
+      "rule": "A3",
+      "label": "Test record",
+      "reason": "Marked as a test entry",
+      "removed": 0,
+      "remaining": 322
+    },
+    {
+      "rule": "A3b",
+      "label": "Unverified pipeline entry",
+      "reason": "In the pipeline without the agency tag or a source, so it can't be credited to any channel",
+      "removed": 1,
+      "remaining": 321
+    },
+    {
+      "rule": "A4",
+      "label": "Internal",
+      "reason": "Internal contact, not a customer",
+      "removed": 15,
+      "remaining": 306
+    },
+    {
+      "rule": "A5",
+      "label": "Duplicate",
+      "reason": "Same person entered twice; the copy is removed",
+      "removed": 12,
+      "remaining": 294
+    }
+  ],
+  "removedIds": [
+    "xbk8iWoki4CvXuDeiA8Z",
+    "8fzv9DL2MwBdsG5bAtOn",
+    "45mO5EnnTGMvxQUCpNl1",
+    "b3FWx2jIOwxk9FlM4pr4",
+    "XoeJIBcuzGW9uSMfptK5",
+    "0rt5NHC04YmBdAkZi8TV",
+    "gxNtB8fhh9Oo4S4Comjs",
+    "V2oBaBbgKuGr6SS9iki0",
+    "zG2GJm5jimOrxyUVqY7X",
+    "icuY4Tj0eDLRJMaRajsX",
+    "aOhufmF1v4LGmlYpGTJu",
+    "8TvWEM3IOCe1wLfYwgRS",
+    "dhOhwN9XnyUHB2L0TxyC",
+    "ZPKLJ9ZvEAeWWRxhjYrY",
+    "wRhTbj7iYTE3X0cvqm09",
+    "cn0VPPqY08jBICFoIciV",
+    "nzu8Bdb5L9oIctRKG450",
+    "AgJgN8hntibyfv4T5DRO",
+    "KFlBQOy7OutpQdepY3v4",
+    "Q2VAD1mGNVXeBtwnLKMF",
+    "rNWgVdNkebUjUXKVaOSd",
+    "NslJHFrundxrf859c36W",
+    "hTQIKnZ64f2kECjqrdgA",
+    "TP3PqO63tIxxb5SCiXcK",
+    "RKYFUvgfBJ0lxUatvTNA",
+    "VyoraCiNXtO0fFTMlKyN",
+    "26iaE9ckrhLdaNgaMJkL",
+    "Y5R11tvMnVq0cncGzHU7",
+    "u9RWEyvaARZNVq9xcRTf",
+    "TXhkPBqiUXfJyRiONrXt",
+    "BYGAsoomzo7VkmvJGsFh",
+    "odBsbdozqN8QSgW487Km",
+    "aeTk0cRrtnC9vKnndNmr",
+    "UrUHv7il86G8R3hEfNtE",
+    "vh8Ch31xJYtpfz6U68jb",
+    "UYDZbYdy383yaF8ekxAr",
+    "jACuCLFGNGWO6wrTCxFU",
+    "tLruEjkBjntKgU4pPVTr",
+    "pSIcHmXefnUblLXaO1JV",
+    "WAFUB60pJWm8Ran26lhu",
+    "R0kfPaMnflg0KxyGULiU",
+    "7OGrgOq9RCvk3ErsgQle",
+    "Oj7xYrbV7DkqaYhLCsF6",
+    "FxKscPpnxfDTKKUPvqOC",
+    "gCHzZQcVn039twvx3Vl9",
+    "LjWD98hDhuBtb2pejqNp",
+    "GSRC1Jzb2pjDpONEX0wa",
+    "XJ3PRqDrofnhZZoc0aQN",
+    "tJk4oEnmiBUzeVU9sljz",
+    "KoBFUOqeFs8mDSOPBfpo",
+    "I4kvV6axlFBmIzK21oap",
+    "USh04N2oSc1Vnl4Pd6Xh",
+    "cHIxrg60n9XofrExNlzN",
+    "d5xnlxHijb7ub0WgjDEX",
+    "9aqSZrrZY3hxpkBO1yHj",
+    "SX94EIhGwajikCbpF1hu",
+    "RRijjZSJD67CNE4qUUDv",
+    "MK3kxpT0pqw4b06JkufB",
+    "gBLWaLtKlvALgUVbERC2",
+    "EnoPSPhcSUgM7g78GUeI",
+    "NwHzZo3AHJ6WkWIYuCMU"
+  ],
+  "ignoredIds": [
+    "L8RnuNTnBk1P5HUMZNJa",
+    "RLlnhLHNQtj3eNKqEoEP",
+    "HOMYUysxQs4fMkNDCBu0",
+    "7v8iQWCuZ3lzDo1bEI7s",
+    "uQccLFqX7QEQr5aUJzhQ",
+    "O987KPjCROkszY3aUCTF",
+    "tsB6pgzzWuaf2e4E3OAF"
+  ],
+  "checks": [
+    {
+      "id": "B1",
+      "level": "fail",
+      "ok": true,
+      "message": "Received every record GHL reported"
+    },
+    {
+      "id": "B2",
+      "level": "fail",
+      "ok": true,
+      "message": "Sales Pipeline has the expected 8 stages"
+    },
+    {
+      "id": "B5",
+      "level": "warn",
+      "ok": true,
+      "message": "Removal share is normal"
+    },
+    {
+      "id": "CONSISTENCY",
+      "level": "fail",
+      "ok": true,
+      "message": "All breakdowns add up to the totals"
+    }
+  ]
+}

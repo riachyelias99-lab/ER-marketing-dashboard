@@ -1,0 +1,1676 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-12T20:53:35.497Z",
+  "mode": "clean",
+  "stages": [
+    "Qualified Opt In",
+    "Disqualified",
+    "Booked call",
+    "Closed",
+    "Cancelled",
+    "No Show",
+    "Follow Up",
+    "Lost"
+  ],
+  "stageGroups": {
+    "moving": [
+      "Qualified Opt In",
+      "Booked call",
+      "Follow Up"
+    ],
+    "won": [
+      "Closed"
+    ],
+    "dead": [
+      "Disqualified",
+      "Cancelled",
+      "No Show",
+      "Lost"
+    ]
+  },
+  "totals": {
+    "leads": 294,
+    "deals": 204,
+    "sales": 28,
+    "revenue": 190750
+  },
+  "sources": [
+    {
+      "source": "Instagram Ad",
+      "leads": 29,
+      "deals": 22,
+      "stageCounts": {
+        "Qualified Opt In": 6,
+        "Disqualified": 2,
+        "Booked call": 1,
+        "Closed": 5,
+        "Cancelled": 0,
+        "No Show": 1,
+        "Follow Up": 5,
+        "Lost": 2
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 29
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 22
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 20
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 14
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 12
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 5
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.7586206896551724
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.9090909090909091
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.7
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.8571428571428571
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.4166666666666667
+        }
+      ],
+      "overallRate": 0.1724137931034483,
+      "sales": 5,
+      "revenue": 31500,
+      "revenuePerLead": 1086.2068965517242,
+      "closeRate": 0.1724137931034483,
+      "ignoredWonCount": 1,
+      "ignoredWonValues": [
+        145000
+      ],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 1.7241379310344827,
+        "per10Revenue": 10862.068965517243
+      },
+      "openForecast": {
+        "openDeals": 12,
+        "winRate": 0.5,
+        "avgWonValue": 7875,
+        "expectedRevenue": 47250
+      }
+    },
+    {
+      "source": "Billboard",
+      "leads": 37,
+      "deals": 24,
+      "stageCounts": {
+        "Qualified Opt In": 4,
+        "Disqualified": 1,
+        "Booked call": 5,
+        "Closed": 4,
+        "Cancelled": 1,
+        "No Show": 2,
+        "Follow Up": 5,
+        "Lost": 2
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 37
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 24
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 23
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 19
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 11
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 4
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.6486486486486487
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.9583333333333334
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.8260869565217391
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.5789473684210527
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.36363636363636365
+        }
+      ],
+      "overallRate": 0.10810810810810811,
+      "sales": 4,
+      "revenue": 40000,
+      "revenuePerLead": 1081.081081081081,
+      "closeRate": 0.10810810810810811,
+      "ignoredWonCount": 0,
+      "ignoredWonValues": [],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 1.0810810810810811,
+        "per10Revenue": 10810.81081081081
+      },
+      "openForecast": {
+        "openDeals": 14,
+        "winRate": 0.4,
+        "avgWonValue": 10000,
+        "expectedRevenue": 56000.00000000001
+      }
+    },
+    {
+      "source": "Webinar",
+      "leads": 33,
+      "deals": 22,
+      "stageCounts": {
+        "Qualified Opt In": 3,
+        "Disqualified": 2,
+        "Booked call": 6,
+        "Closed": 4,
+        "Cancelled": 0,
+        "No Show": 3,
+        "Follow Up": 3,
+        "Lost": 1
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 33
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 22
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 20
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 17
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 8
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 4
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.6666666666666666
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.9090909090909091
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.85
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.47058823529411764
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.5
+        }
+      ],
+      "overallRate": 0.12121212121212122,
+      "sales": 4,
+      "revenue": 33000,
+      "revenuePerLead": 1000,
+      "closeRate": 0.12121212121212122,
+      "ignoredWonCount": 1,
+      "ignoredWonValues": [
+        0
+      ],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 1.2121212121212122,
+        "per10Revenue": 10000
+      },
+      "openForecast": {
+        "openDeals": 12,
+        "winRate": 0.4,
+        "avgWonValue": 11000,
+        "expectedRevenue": 52800.00000000001
+      }
+    },
+    {
+      "source": "LinkedIn Outreach",
+      "leads": 22,
+      "deals": 16,
+      "stageCounts": {
+        "Qualified Opt In": 5,
+        "Disqualified": 1,
+        "Booked call": 0,
+        "Closed": 2,
+        "Cancelled": 1,
+        "No Show": 1,
+        "Follow Up": 2,
+        "Lost": 4
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 22
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 16
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 15
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 10
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 8
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 2
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.7272727272727273
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.9375
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.6666666666666666
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.8
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.25
+        }
+      ],
+      "overallRate": 0.09090909090909091,
+      "sales": 2,
+      "revenue": 20000,
+      "revenuePerLead": 909.0909090909091,
+      "closeRate": 0.09090909090909091,
+      "ignoredWonCount": 0,
+      "ignoredWonValues": [],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 0.9090909090909091,
+        "per10Revenue": 9090.909090909092
+      },
+      "openForecast": {
+        "openDeals": 7,
+        "winRate": 0.2222222222222222,
+        "avgWonValue": 10000,
+        "expectedRevenue": 15555.555555555553
+      }
+    },
+    {
+      "source": "Cold Email",
+      "leads": 27,
+      "deals": 22,
+      "stageCounts": {
+        "Qualified Opt In": 3,
+        "Disqualified": 5,
+        "Booked call": 2,
+        "Closed": 2,
+        "Cancelled": 2,
+        "No Show": 3,
+        "Follow Up": 5,
+        "Lost": 0
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 27
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 22
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 17
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 14
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 7
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 2
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.8148148148148148
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.7727272727272727
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.8235294117647058
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.5
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.2857142857142857
+        }
+      ],
+      "overallRate": 0.07407407407407407,
+      "sales": 2,
+      "revenue": 13500,
+      "revenuePerLead": 500,
+      "closeRate": 0.07407407407407407,
+      "ignoredWonCount": 0,
+      "ignoredWonValues": [],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 0.7407407407407407,
+        "per10Revenue": 5000
+      },
+      "openForecast": {
+        "openDeals": 10,
+        "winRate": 0.16666666666666666,
+        "avgWonValue": 6750,
+        "expectedRevenue": 11249.999999999998
+      }
+    },
+    {
+      "source": "Google Search",
+      "leads": 34,
+      "deals": 21,
+      "stageCounts": {
+        "Qualified Opt In": 6,
+        "Disqualified": 2,
+        "Booked call": 5,
+        "Closed": 4,
+        "Cancelled": 0,
+        "No Show": 0,
+        "Follow Up": 3,
+        "Lost": 1
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 34
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 21
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 19
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 13
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 8
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 4
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.6176470588235294
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.9047619047619048
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.6842105263157895
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.6153846153846154
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.5
+        }
+      ],
+      "overallRate": 0.11764705882352941,
+      "sales": 4,
+      "revenue": 15500,
+      "revenuePerLead": 455.88235294117646,
+      "closeRate": 0.11764705882352941,
+      "ignoredWonCount": 0,
+      "ignoredWonValues": [],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 1.1764705882352942,
+        "per10Revenue": 4558.823529411765
+      },
+      "openForecast": {
+        "openDeals": 14,
+        "winRate": 0.5714285714285714,
+        "avgWonValue": 3875,
+        "expectedRevenue": 31000
+      }
+    },
+    {
+      "source": "Referral",
+      "leads": 46,
+      "deals": 30,
+      "stageCounts": {
+        "Qualified Opt In": 5,
+        "Disqualified": 2,
+        "Booked call": 7,
+        "Closed": 3,
+        "Cancelled": 4,
+        "No Show": 3,
+        "Follow Up": 4,
+        "Lost": 2
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 46
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 30
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 28
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 23
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 9
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 3
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.6521739130434783
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.9333333333333333
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.8214285714285714
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.391304347826087
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.3333333333333333
+        }
+      ],
+      "overallRate": 0.06521739130434782,
+      "sales": 3,
+      "revenue": 19250,
+      "revenuePerLead": 418.4782608695652,
+      "closeRate": 0.06521739130434782,
+      "ignoredWonCount": 0,
+      "ignoredWonValues": [],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 0.6521739130434783,
+        "per10Revenue": 4184.782608695652
+      },
+      "openForecast": {
+        "openDeals": 16,
+        "winRate": 0.21428571428571427,
+        "avgWonValue": 6416.666666666667,
+        "expectedRevenue": 22000
+      }
+    },
+    {
+      "source": "Website Form",
+      "leads": 29,
+      "deals": 23,
+      "stageCounts": {
+        "Qualified Opt In": 8,
+        "Disqualified": 7,
+        "Booked call": 3,
+        "Closed": 1,
+        "Cancelled": 0,
+        "No Show": 1,
+        "Follow Up": 1,
+        "Lost": 2
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 29
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 23
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 16
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 8
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 4
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 1
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.7931034482758621
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.6956521739130435
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.5
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.5
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.25
+        }
+      ],
+      "overallRate": 0.034482758620689655,
+      "sales": 1,
+      "revenue": 11000,
+      "revenuePerLead": 379.3103448275862,
+      "closeRate": 0.034482758620689655,
+      "ignoredWonCount": 0,
+      "ignoredWonValues": [],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 0.3448275862068966,
+        "per10Revenue": 3793.1034482758623
+      },
+      "openForecast": {
+        "openDeals": 12,
+        "winRate": 0.09090909090909091,
+        "avgWonValue": 11000,
+        "expectedRevenue": 12000
+      }
+    },
+    {
+      "source": "Facebook Ad",
+      "leads": 37,
+      "deals": 24,
+      "stageCounts": {
+        "Qualified Opt In": 4,
+        "Disqualified": 2,
+        "Booked call": 5,
+        "Closed": 3,
+        "Cancelled": 2,
+        "No Show": 4,
+        "Follow Up": 2,
+        "Lost": 2
+      },
+      "funnel": [
+        {
+          "key": "lead",
+          "label": "Lead",
+          "count": 37
+        },
+        {
+          "key": "pipeline",
+          "label": "Entered pipeline",
+          "count": 24
+        },
+        {
+          "key": "qualified",
+          "label": "Qualified",
+          "count": 22
+        },
+        {
+          "key": "booked",
+          "label": "Booked a call",
+          "count": 18
+        },
+        {
+          "key": "attended",
+          "label": "Attended the call",
+          "count": 7
+        },
+        {
+          "key": "won",
+          "label": "Won",
+          "count": 3
+        }
+      ],
+      "stepRates": [
+        {
+          "from": "Lead",
+          "to": "Entered pipeline",
+          "rate": 0.6486486486486487
+        },
+        {
+          "from": "Entered pipeline",
+          "to": "Qualified",
+          "rate": 0.9166666666666666
+        },
+        {
+          "from": "Qualified",
+          "to": "Booked a call",
+          "rate": 0.8181818181818182
+        },
+        {
+          "from": "Booked a call",
+          "to": "Attended the call",
+          "rate": 0.3888888888888889
+        },
+        {
+          "from": "Attended the call",
+          "to": "Won",
+          "rate": 0.42857142857142855
+        }
+      ],
+      "overallRate": 0.08108108108108109,
+      "sales": 3,
+      "revenue": 7000,
+      "revenuePerLead": 189.1891891891892,
+      "closeRate": 0.08108108108108109,
+      "ignoredWonCount": 1,
+      "ignoredWonValues": [
+        145000
+      ],
+      "smallSample": false,
+      "projection": {
+        "per10Sales": 0.8108108108108109,
+        "per10Revenue": 1891.8918918918919
+      },
+      "openForecast": {
+        "openDeals": 11,
+        "winRate": 0.23076923076923078,
+        "avgWonValue": 3500,
+        "expectedRevenue": 8884.615384615387
+      }
+    }
+  ],
+  "advice": {
+    "average": 648.8095238095239,
+    "invest": [
+      {
+        "source": "Instagram Ad",
+        "revenuePerLead": 1086.2068965517242,
+        "ratio": 1.6741537488136666,
+        "reason": "$1,086 per lead, 1.7× the average",
+        "badge": null
+      },
+      {
+        "source": "Billboard",
+        "revenuePerLead": 1081.081081081081,
+        "ratio": 1.6662534093726753,
+        "reason": "$1,081 per lead, 1.7× the average",
+        "badge": null
+      },
+      {
+        "source": "Webinar",
+        "revenuePerLead": 1000,
+        "ratio": 1.5412844036697246,
+        "reason": "$1,000 per lead, 1.5× the average",
+        "badge": null
+      },
+      {
+        "source": "LinkedIn Outreach",
+        "revenuePerLead": 909.0909090909091,
+        "ratio": 1.4011676396997497,
+        "reason": "$909 per lead, 1.4× the average",
+        "badge": null
+      }
+    ],
+    "keep": [
+      {
+        "source": "Cold Email",
+        "revenuePerLead": 500,
+        "ratio": 0.7706422018348623,
+        "reason": "$500 per lead, 0.8× the average",
+        "badge": null
+      },
+      {
+        "source": "Facebook Ad",
+        "revenuePerLead": 189.1891891891892,
+        "ratio": 0.29159434664021816,
+        "reason": "$189 per lead, 0.3× the average",
+        "badge": "Can't judge fairly — a sale's value is missing"
+      }
+    ],
+    "cut": [
+      {
+        "source": "Google Search",
+        "revenuePerLead": 455.88235294117646,
+        "ratio": 0.7026443604964921,
+        "reason": "$456 per lead, 0.7× the average",
+        "badge": null
+      },
+      {
+        "source": "Referral",
+        "revenuePerLead": 418.4782608695652,
+        "ratio": 0.6449940167530912,
+        "reason": "$418 per lead, 0.6× the average",
+        "badge": null
+      },
+      {
+        "source": "Website Form",
+        "revenuePerLead": 379.3103448275862,
+        "ratio": 0.5846251186333439,
+        "reason": "$379 per lead, 0.6× the average",
+        "badge": null
+      }
+    ],
+    "notJudged": []
+  },
+  "insights": {
+    "advice": [
+      "Put more budget into Instagram Ad ($1,086 per lead), Billboard ($1,081 per lead), Webinar ($1,000 per lead) and LinkedIn Outreach ($909 per lead): each lead there is worth well above the $649 agency average.",
+      "Consider cutting Google Search ($456 per lead), Referral ($418 per lead) and Website Form ($379 per lead): well below the $649 agency average.",
+      "Facebook Ad can't be judged fairly yet: a sale's value is missing, so its revenue looks lower than it really is."
+    ],
+    "volume": [
+      "Referral brought the most leads (46).",
+      "LinkedIn Outreach brought the fewest (22)."
+    ],
+    "pipeline": [
+      "69% of all leads entered the sales pipeline (204 of 294).",
+      "Referral has the most deals still in progress (16)."
+    ],
+    "conversion": [
+      "Instagram Ad turns the most leads into sales: 17% of its leads became clients.",
+      "The biggest drop-off is from \"Attended the call\" to \"Won\": only 38% make it."
+    ],
+    "revenue": [
+      "Billboard brought the most closed revenue ($40,000).",
+      "3 sales have an unreliable value and are not counted, so some revenue may be understated (marked ⚠️)."
+    ]
+  },
+  "audit": {
+    "waterfall": [
+      {
+        "rule": "START",
+        "label": "All contacts in the sandbox",
+        "reason": "Everything downloaded from GoHighLevel",
+        "removed": 0,
+        "remaining": 420
+      },
+      {
+        "rule": "A1",
+        "label": "Not this agency's",
+        "reason": "Belongs to another user of the shared sandbox",
+        "removed": 65,
+        "remaining": 355
+      },
+      {
+        "rule": "A2",
+        "label": "Demo record",
+        "reason": "Marked as demo data, not a real lead",
+        "removed": 33,
+        "remaining": 322
+      },
+      {
+        "rule": "A3",
+        "label": "Test record",
+        "reason": "Marked as a test entry",
+        "removed": 0,
+        "remaining": 322
+      },
+      {
+        "rule": "A3b",
+        "label": "Unverified pipeline entry",
+        "reason": "In the pipeline without the agency tag or a source, so it can't be credited to any channel",
+        "removed": 1,
+        "remaining": 321
+      },
+      {
+        "rule": "A4",
+        "label": "Internal",
+        "reason": "Internal contact, not a customer",
+        "removed": 15,
+        "remaining": 306
+      },
+      {
+        "rule": "A5",
+        "label": "Duplicate",
+        "reason": "Same person entered twice; the copy is removed",
+        "removed": 12,
+        "remaining": 294
+      }
+    ],
+    "removed": [
+      {
+        "id": "xbk8iWoki4CvXuDeiA8Z",
+        "name": "sohayla najib",
+        "maskedEmail": "de***@example.com",
+        "source": "Website",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "8fzv9DL2MwBdsG5bAtOn",
+        "name": "khalil semaan",
+        "maskedEmail": "kh***@example.com",
+        "source": "Instagram DM",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "45mO5EnnTGMvxQUCpNl1",
+        "name": "reem tannous",
+        "maskedEmail": "re***@example.com",
+        "source": "Website Form",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "b3FWx2jIOwxk9FlM4pr4",
+        "name": "rami nassar",
+        "maskedEmail": "ra***@example.com",
+        "source": "Referral",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "XoeJIBcuzGW9uSMfptK5",
+        "name": "jad abboud",
+        "maskedEmail": "ja***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "0rt5NHC04YmBdAkZi8TV",
+        "name": "leila abboud",
+        "maskedEmail": "le***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "gxNtB8fhh9Oo4S4Comjs",
+        "name": "nadia attieh",
+        "maskedEmail": "na***@example.com",
+        "source": "Website Form",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "V2oBaBbgKuGr6SS9iki0",
+        "name": "elias sleiman",
+        "maskedEmail": "el***@example.com",
+        "source": "Referral",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "zG2GJm5jimOrxyUVqY7X",
+        "name": "reem saad",
+        "maskedEmail": "re***@example.com",
+        "source": "Website Form",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "icuY4Tj0eDLRJMaRajsX",
+        "name": "hiba karam",
+        "maskedEmail": "hi***@example.com",
+        "source": "Instagram DM",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "aOhufmF1v4LGmlYpGTJu",
+        "name": "karim antoun",
+        "maskedEmail": "ka***@example.com",
+        "source": "Instagram DM",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "8TvWEM3IOCe1wLfYwgRS",
+        "name": "tarek gerges",
+        "maskedEmail": "ta***@example.com",
+        "source": "Webinar",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "dhOhwN9XnyUHB2L0TxyC",
+        "name": "mona haddad",
+        "maskedEmail": "mo***@example.com",
+        "source": "Google Search",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "ZPKLJ9ZvEAeWWRxhjYrY",
+        "name": "zeina basil",
+        "maskedEmail": "ze***@example.com",
+        "source": "LinkedIn Outreach",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "wRhTbj7iYTE3X0cvqm09",
+        "name": "bilal chidiac",
+        "maskedEmail": "bi***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "cn0VPPqY08jBICFoIciV",
+        "name": "rana hachem",
+        "maskedEmail": "ra***@example.com",
+        "source": "Instagram DM",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "nzu8Bdb5L9oIctRKG450",
+        "name": "jad daher",
+        "maskedEmail": "ja***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "AgJgN8hntibyfv4T5DRO",
+        "name": "leila sleiman",
+        "maskedEmail": "le***@example.com",
+        "source": "LinkedIn Outreach",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "KFlBQOy7OutpQdepY3v4",
+        "name": "reem rahme",
+        "maskedEmail": "re***@example.com",
+        "source": "Cold Email",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "Q2VAD1mGNVXeBtwnLKMF",
+        "name": "nadia fares",
+        "maskedEmail": "na***@example.com",
+        "source": "Webinar",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "rNWgVdNkebUjUXKVaOSd",
+        "name": "jad antoun",
+        "maskedEmail": "ja***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "NslJHFrundxrf859c36W",
+        "name": "leila hachem",
+        "maskedEmail": "le***@example.com",
+        "source": "Cold Email",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "hTQIKnZ64f2kECjqrdgA",
+        "name": "walid tannous",
+        "maskedEmail": "wa***@example.com",
+        "source": "Google Search",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "TP3PqO63tIxxb5SCiXcK",
+        "name": "bilal fares",
+        "maskedEmail": "bi***@example.com",
+        "source": "Google Search",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "RKYFUvgfBJ0lxUatvTNA",
+        "name": "omar abboud",
+        "maskedEmail": "om***@example.com",
+        "source": "Referral",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "VyoraCiNXtO0fFTMlKyN",
+        "name": "yara younes",
+        "maskedEmail": "ya***@example.com",
+        "source": "Referral",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "26iaE9ckrhLdaNgaMJkL",
+        "name": "walid sleiman",
+        "maskedEmail": "wa***@example.com",
+        "source": "Instagram DM",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "Y5R11tvMnVq0cncGzHU7",
+        "name": "amal baz",
+        "maskedEmail": "am***@example.com",
+        "source": "Instagram DM",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "u9RWEyvaARZNVq9xcRTf",
+        "name": "elias aziz",
+        "maskedEmail": "el***@example.com",
+        "source": "Google Search",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "TXhkPBqiUXfJyRiONrXt",
+        "name": "ziad abboud",
+        "maskedEmail": "zi***@example.com",
+        "source": "Cold Email",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "BYGAsoomzo7VkmvJGsFh",
+        "name": "sara abboud",
+        "maskedEmail": "sa***@example.com",
+        "source": "Referral",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "odBsbdozqN8QSgW487Km",
+        "name": "tarek rizk",
+        "maskedEmail": "ta***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "aeTk0cRrtnC9vKnndNmr",
+        "name": "maya khoury",
+        "maskedEmail": "ma***@example.com",
+        "source": "Referral",
+        "rule": "A2",
+        "reason": "Marked as demo data, not a real lead",
+        "firstCaught": null
+      },
+      {
+        "id": "UrUHv7il86G8R3hEfNtE",
+        "name": "dane halt",
+        "maskedEmail": "da***@gmail.com",
+        "source": "Unknown source",
+        "rule": "A3b",
+        "reason": "In the pipeline without the agency tag or a source, so it can't be credited to any channel",
+        "firstCaught": null
+      },
+      {
+        "id": "vh8Ch31xJYtpfz6U68jb",
+        "name": "dima kanaan",
+        "maskedEmail": "di***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "UYDZbYdy383yaF8ekxAr",
+        "name": "sami aziz",
+        "maskedEmail": "sa***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "jACuCLFGNGWO6wrTCxFU",
+        "name": "ziad sarkis",
+        "maskedEmail": "zi***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "tLruEjkBjntKgU4pPVTr",
+        "name": "nabil wehbe",
+        "maskedEmail": "na***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "pSIcHmXefnUblLXaO1JV",
+        "name": "georges hachem",
+        "maskedEmail": "ge***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "WAFUB60pJWm8Ran26lhu",
+        "name": "nay nassar",
+        "maskedEmail": "na***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "R0kfPaMnflg0KxyGULiU",
+        "name": "joe maalouf",
+        "maskedEmail": "jo***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "7OGrgOq9RCvk3ErsgQle",
+        "name": "georges barakat",
+        "maskedEmail": "ge***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "Oj7xYrbV7DkqaYhLCsF6",
+        "name": "imad chami",
+        "maskedEmail": "im***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "FxKscPpnxfDTKKUPvqOC",
+        "name": "sami sarkis",
+        "maskedEmail": "sa***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "gCHzZQcVn039twvx3Vl9",
+        "name": "sirine rahme",
+        "maskedEmail": "si***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "LjWD98hDhuBtb2pejqNp",
+        "name": "lina abboud",
+        "maskedEmail": "li***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "GSRC1Jzb2pjDpONEX0wa",
+        "name": "zeina gerges",
+        "maskedEmail": "ze***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "XJ3PRqDrofnhZZoc0aQN",
+        "name": "layal nassar",
+        "maskedEmail": "la***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "tJk4oEnmiBUzeVU9sljz",
+        "name": "antoine mansour",
+        "maskedEmail": "an***@example.com",
+        "source": "Website Form",
+        "rule": "A4",
+        "reason": "Internal contact, not a customer",
+        "firstCaught": null
+      },
+      {
+        "id": "KoBFUOqeFs8mDSOPBfpo",
+        "name": "fadi gerges",
+        "maskedEmail": "fa***@example.com",
+        "source": "Instagram Ad",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "I4kvV6axlFBmIzK21oap",
+        "name": "fadi aziz",
+        "maskedEmail": "fa***@example.com",
+        "source": "Referral",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "USh04N2oSc1Vnl4Pd6Xh",
+        "name": "wassim nader",
+        "maskedEmail": "wa***@example.com",
+        "source": "Cold Email",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "cHIxrg60n9XofrExNlzN",
+        "name": "carla sleiman",
+        "maskedEmail": "ca***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "d5xnlxHijb7ub0WgjDEX",
+        "name": "carla saad",
+        "maskedEmail": "ca***@example.com",
+        "source": "Instagram Ad",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "9aqSZrrZY3hxpkBO1yHj",
+        "name": "sirine matar",
+        "maskedEmail": "si***@example.com",
+        "source": "Website Form",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "SX94EIhGwajikCbpF1hu",
+        "name": "nabil helou",
+        "maskedEmail": "na***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "RRijjZSJD67CNE4qUUDv",
+        "name": "joelle baz",
+        "maskedEmail": "jo***@example.com",
+        "source": "LinkedIn Outreach",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "MK3kxpT0pqw4b06JkufB",
+        "name": "yara fares",
+        "maskedEmail": "ya***@example.com",
+        "source": "Facebook Ad",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "gBLWaLtKlvALgUVbERC2",
+        "name": "layal maalouf",
+        "maskedEmail": "la***@example.com",
+        "source": "LinkedIn Outreach",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "EnoPSPhcSUgM7g78GUeI",
+        "name": "yara nakhle",
+        "maskedEmail": "ya***@example.com",
+        "source": "Referral",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      },
+      {
+        "id": "NwHzZo3AHJ6WkWIYuCMU",
+        "name": "sami sleiman",
+        "maskedEmail": "sa***@example.com",
+        "source": "LinkedIn Outreach",
+        "rule": "A5",
+        "reason": "Same person entered twice; the copy is removed",
+        "firstCaught": null
+      }
+    ],
+    "ignoredValues": [
+      {
+        "id": "L8RnuNTnBk1P5HUMZNJa",
+        "dealName": "Cedar Group - Jad Rustom",
+        "source": "Billboard",
+        "stage": "Cancelled",
+        "value": 145000,
+        "reason": "Unusually high value — likely a typing mistake",
+        "firstCaught": null
+      },
+      {
+        "id": "RLlnhLHNQtj3eNKqEoEP",
+        "dealName": "Cedar Consulting - Carla Gerges",
+        "source": "Facebook Ad",
+        "stage": "Closed",
+        "value": 145000,
+        "reason": "Unusually high value — likely a typing mistake",
+        "firstCaught": null
+      },
+      {
+        "id": "HOMYUysxQs4fMkNDCBu0",
+        "dealName": "Vertex Works - Farah Assaf",
+        "source": "Instagram Ad",
+        "stage": "Closed",
+        "value": 145000,
+        "reason": "Unusually high value — likely a typing mistake",
+        "firstCaught": null
+      },
+      {
+        "id": "7v8iQWCuZ3lzDo1bEI7s",
+        "dealName": "Northstar Labs - Racha Haddad",
+        "source": "Webinar",
+        "stage": "Closed",
+        "value": 0,
+        "reason": "Marked as a sale but the value is $0",
+        "firstCaught": null
+      },
+      {
+        "id": "uQccLFqX7QEQr5aUJzhQ",
+        "dealName": "Atlas Solutions - Nadia Gerges",
+        "source": "Webinar",
+        "stage": "Disqualified",
+        "value": 145000,
+        "reason": "Unusually high value — likely a typing mistake",
+        "firstCaught": null
+      },
+      {
+        "id": "O987KPjCROkszY3aUCTF",
+        "dealName": "Byblos Agency - Sara Tannous",
+        "source": "Instagram Ad",
+        "stage": "Disqualified",
+        "value": 145000,
+        "reason": "Unusually high value — likely a typing mistake",
+        "firstCaught": null
+      },
+      {
+        "id": "tsB6pgzzWuaf2e4E3OAF",
+        "dealName": "Horizon Labs - Zeina Nassar",
+        "source": "Google Search",
+        "stage": "Follow Up",
+        "value": 145000,
+        "reason": "Unusually high value — likely a typing mistake",
+        "firstCaught": null
+      }
+    ],
+    "removedA1Count": 65,
+    "annotations": {
+      "stageStatusMismatch": 2,
+      "unknownSource": 0,
+      "extraDeals": 0,
+      "orphanDeals": 0
+    },
+    "newSuspiciousCount": 0,
+    "newSince": null
+  },
+  "health": {
+    "result": "pass",
+    "checks": [
+      {
+        "id": "B1",
+        "level": "fail",
+        "ok": true,
+        "message": "Received every record GHL reported"
+      },
+      {
+        "id": "B2",
+        "level": "fail",
+        "ok": true,
+        "message": "Sales Pipeline has the expected 8 stages"
+      },
+      {
+        "id": "B5",
+        "level": "warn",
+        "ok": true,
+        "message": "Removal share is normal"
+      },
+      {
+        "id": "CONSISTENCY",
+        "level": "fail",
+        "ok": true,
+        "message": "All breakdowns add up to the totals"
+      }
+    ]
+  }
+}
