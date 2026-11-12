@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marketing Performance</title>
+  <meta name="description" content="Where should next month's marketing budget go? Leads, pipeline, conversion and revenue by source.">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js" defer></script>
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <div id="raw-banner" class="raw-banner" hidden>RAW DATA — not cleaned (local preview only)</div>
+  <header class="topbar">
+    <h1>Marketing Performance — Where should next month's budget go?</h1>
+    <div id="topbar"></div>
+    <nav class="tabs" aria-label="Sections">
+      <button type="button" class="tab" id="tab-overview" aria-controls="overview">Overview</button>
+      <button type="button" class="tab" id="tab-removed" aria-controls="removed">Removed records</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="load-error" class="note note-warn" hidden>The dashboard data could not be loaded right now. Please refresh the page in a few minutes.</div>
+
+    <section id="overview" class="tabpanel" aria-labelledby="tab-overview">
+      <section class="card" id="sec-advice">
+        <h2>Budget advice</h2>
+        <p class="sub">Each source is compared on <strong>revenue per lead</strong>: how much closed revenue one lead from that source brought, on average.</p>
+        <div id="advice-insights" class="insights"></div>
+        <div id="advice-cards" class="advice-grid"></div>
+        <div id="not-judged"></div>
+        <h3>Scorecard</h3>
+        <div id="scorecard" class="table-wrap"></div>
+      </section>
+
+      <section class="card" id="sec-volume">
+        <h2>1. Lead volume</h2>
+        <p class="sub">How many real leads each source brought.</p>
+        <div id="volume-insights" class="insights"></div>
+        <div class="chart-box" id="volume-box"><canvas id="volume-chart" aria-label="Leads by source, bar chart" role="img"></canvas></div>
+      </section>
+
+      <section class="card" id="sec-pipeline">
+        <h2>2. Where deals are now</h2>
+        <p class="sub">Every deal sits in exactly one of the 8 pipeline stages. Each bar adds up to that source's number of deals.</p>
+        <div id="pipeline-insights" class="insights"></div>
+        <div class="chart-box" id="stage-box"><canvas id="stage-chart" aria-label="Deals by pipeline stage and source, stacked bar chart" role="img"></canvas></div>
+        <details class="table-view"><summary>Show as a table</summary><div id="stage-table" class="table-wrap"></div></details>
+      </section>
+
+      <section class="card" id="sec-conversion">
+        <h2>3. Conversion</h2>
+        <p class="sub">How far leads get. Each step counts everyone who reached <em>at least</em> that point.</p>
+        <div id="conversion-insights" class="insights"></div>
+        <div class="compare">
+          <label>Compare <select id="funnel-a"></select></label>
+          <span class="vs">vs</span>
+          <label><select id="funnel-b"></select></label>
+        </div>
+        <div class="funnel-pair">
+          <figure><figcaption id="funnel-a-title"></figcaption><div class="chart-box funnel-box"><canvas id="funnel-a-chart" role="img"></canvas></div></figure>
+          <figure><figcaption id="funnel-b-title"></figcaption><div class="chart-box funnel-box"><canvas id="funnel-b-chart" role="img"></canvas></div></figure>
+        </div>
+        <h3>Step-by-step conversion for every source</h3>
+        <div id="rates-table" class="table-wrap"></div>
+      </section>
+
+      <section class="card" id="sec-revenue">
+        <h2>4. Revenue</h2>
+        <p class="sub">Closed revenue: the value of deals marked "Closed" (won). ⚠️ means a sale's value looked wrong and was not counted.</p>
+        <div id="revenue-insights" class="insights"></div>
+        <div class="chart-box" id="revenue-box"><canvas id="revenue-chart" aria-label="Closed revenue by source, bar chart" role="img"></canvas></div>
+        <h3>Estimates based on past results</h3>
+        <div id="revenue-table" class="table-wrap"></div>
+      </section>
+
+      <section class="card" id="sec-method">
+        <h2>How we calculated this</h2>
+        <div id="footer"></div>
+      </section>
+    </section>
+
+    <section id="removed" class="tabpanel" aria-labelledby="tab-removed" hidden>
+      <section class="card">
+        <h2>From everything downloaded to real leads</h2>
+        <p class="sub">The shared sandbox holds other people's records and some junk. Each step below removes one kind; every record is removed at most once.</p>
+        <div id="waterfall" class="table-wrap"></div>
+      </section>
+      <section class="card">
+        <h2>Removed records</h2>
+        <p class="sub">Records that looked like this agency's data but were left out. <span class="badge badge-new">NEW</span> = caught in the last 7 days.</p>
+        <div id="removed-list" class="table-wrap"></div>
+      </section>
+      <section class="card">
+        <h2>Kept, but dollar value ignored</h2>
+        <p class="sub">These people and deals are real and are counted everywhere, but their dollar value looked wrong, so it is not added to revenue.</p>
+        <div id="ignored-list" class="table-wrap"></div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
