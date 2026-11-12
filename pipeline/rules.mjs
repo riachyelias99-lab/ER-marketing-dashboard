@@ -39,7 +39,7 @@ const RULES = [
  * @returns {{ kept: Array<{contact, opps}>, removed: object[], removedA1Count: number,
  *             scopeCount: number, waterfall: object[] }}
  */
-export function applyRemovalRules(raw, ctx) {
+export function applyRemovalRules(raw, ctx, { scopeOnly = false } = {}) {
   const oppsByContact = new Map();
   for (const o of raw.opportunities) {
     if (o.pipelineId !== ctx.pipelineId) continue;
@@ -58,12 +58,14 @@ export function applyRemovalRules(raw, ctx) {
     waterfall.push({ rule, ...RULE_TEXT[rule], removed: out.length, remaining: records.length });
   };
 
-  for (const [rule, catches] of RULES) {
+  // Stage 1 "raw" preview: only decide what is the agency's (A1), clean nothing.
+  for (const [rule, catches] of scopeOnly ? RULES.slice(0, 1) : RULES) {
     const out = records.filter(catches);
     records = records.filter(r => !catches(r));
     record(rule, out);
   }
   const scopeCount = waterfall[1].remaining;
+  if (scopeOnly) return { kept: records, removed, removedA1Count, scopeCount, waterfall };
 
   const copies = findDuplicateCopies(records, ctx);
   const out = records.filter(r => copies.has(r.contact.id));
