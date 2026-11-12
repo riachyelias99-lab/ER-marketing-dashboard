@@ -32,6 +32,17 @@ export const FUNNEL_STEPS = [
   { key: 'won', label: 'Won', stages: ['Closed'] },
 ];
 
+// Plain-English label and reason per rule — shown to the owner (spec §7).
+export const RULE_TEXT = {
+  START: { label: 'All contacts in the sandbox', reason: 'Everything downloaded from GoHighLevel' },
+  A1: { label: "Not this agency's", reason: 'Belongs to another user of the shared sandbox' },
+  A2: { label: 'Demo record', reason: 'Marked as demo data, not a real lead' },
+  A3: { label: 'Test record', reason: 'Marked as a test entry' },
+  A3b: { label: 'Unverified pipeline entry', reason: "In the pipeline without the agency tag or a source, so it can't be credited to any channel" },
+  A4: { label: 'Internal', reason: 'Internal contact, not a customer' },
+  A5: { label: 'Duplicate', reason: 'Same person entered twice; the copy is removed' },
+};
+
 /**
  * Shared data shapes (see plan "Shared data shapes"):
  * Deal          { id, name, stage, status, value: number|null, originalValue: number|null, valueIgnored: boolean }
