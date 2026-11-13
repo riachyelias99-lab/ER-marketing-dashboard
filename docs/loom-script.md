@@ -42,8 +42,8 @@ Close everything else. Mute notifications.
 **Scroll to the ladder. Point at the vertical line.**
 
 > "Every source sits on one scale. The bar is how much revenue one lead from that source is worth. This line is the agency average — six hundred and forty-nine dollars.
-> Instagram Ad and Billboard are miles above it, so that's where the money goes. Google Search, Referral and Website Form fall short.
-> And look at Referral: it brings the *most* leads, forty-six of them, but they're the cheapest leads in the business. Volume alone would have sent the budget to the wrong place."
+> Instagram Ad and Billboard are above it, around a thousand and eighty dollars a lead, so that's where the money goes. Google Search, Referral and Website Form fall short.
+> And look at Referral: it brings the *most* leads, forty-six of them, more than any other source — but each one is worth four hundred and eighteen dollars, well under the average. Counting leads alone would have sent the budget to the wrong place."
 
 ### 0:55 – 1:25 · The evidence
 **Scroll through sections 1 to 4, roughly five seconds each.**
@@ -53,9 +53,10 @@ Close everything else. Mute notifications.
 ### 1:25 – 2:05 · Hard case one: the data is dirty
 **Tab 3 (the raw version), then Tab 1, then the "What we left out" tab.**
 
-> "Now the hard part. Here is the same dashboard with no cleaning. It says the agency earned four hundred and eighty thousand dollars, and it tells you to invest in Facebook Ad.
+> "Now the hard part. Here is the same dashboard with the cleaning switched off. It says the agency earned four hundred and eighty thousand dollars, and it tells you to invest in Facebook Ad.
 > Both are wrong. Facebook Ad has one deal recorded at a hundred and forty-five thousand dollars, when every real deal is between fifteen hundred and twelve thousand. It's a typing mistake.
-> Everything removed is listed here, with the reason. Four hundred and twenty records down to two hundred and ninety-four: other students' records, demo data, internal contacts, and twelve duplicates.
+> And it would have cut Webinar and LinkedIn Outreach — two of the four sources that actually deserve more budget.
+> Everything removed is listed here, with the reason. Four hundred and twenty records down to two hundred and ninety-four: sixty-five belonging to other users of the shared sandbox, thirty-three demo records, fifteen internal contacts, twelve duplicates.
 > The sale still counts. Only the broken dollar amount is left out — and the dashboard says so, instead of guessing a number."
 
 ### 2:05 – 2:35 · Hard case two: a broken morning
@@ -90,3 +91,7 @@ Close everything else. Mute notifications.
 | Uncleaned revenue | $480,750 — $290,000 of it fake |
 | Deal values ignored | 7 (six at $145,000, one won deal at $0) |
 | Automated tests | 95 |
+| Best / worst per lead | Instagram Ad $1,086 · Facebook Ad $189 |
+| Most leads | Referral, 46 — but only $418 a lead |
+
+**If someone asks why the uncleaned view shows 355 leads, not 420:** the uncleaned view still leaves out the 65 records belonging to other users of the shared sandbox — those are not the agency's data in any version. Everything else is switched off: demo records, internal contacts, duplicates and the broken dollar values are all left in.
