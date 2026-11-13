@@ -76,6 +76,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 **Tech choices**
 - **GitHub Actions + Vercel:** free, no server to maintain, and Git history doubles as the audit log of every daily run.
 - **Plain HTML + Chart.js, no framework:** fewer moving parts and every file readable. Chart.js is pinned to 4.4.1.
+- **The page, its code and its data are told to revalidate on every visit** (`vercel.json`), because a browser that reuses yesterday's JavaScript against today's numbers would quietly show the wrong dashboard.
 - **The API key lives only in GitHub Secrets** (and in a local, git-ignored `.env`). An automated test fails if a key pattern appears in any committable file.
 - **One scale instead of three lists:** sources are ranked on a single axis against the agency average, so how far above or below the line a source sits is visible, not just which group it fell into.
 - **Charts:** colour means something: green = won, blues = still moving, greys = dead ends; "Closed" sits first against the axis (the only directly comparable segment); every chart has labels or a table view. No pie charts.
