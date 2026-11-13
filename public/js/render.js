@@ -42,6 +42,20 @@ export function renderTopBar(latest, status) {
   fill('topbar', ...nodes);
 }
 
+/** Four headline numbers, so the size of the business is clear before any chart. */
+export function renderStats(totals) {
+  const tiles = [
+    { value: String(totals.leads), label: 'Real leads', hint: 'after cleaning' },
+    { value: String(totals.deals), label: 'Entered the pipeline', hint: `${pct(totals.leads ? totals.deals / totals.leads : null)} of leads` },
+    { value: String(totals.sales), label: 'Sales won', hint: `${pct(totals.leads ? totals.sales / totals.leads : null)} of leads` },
+    { value: money(totals.revenue), label: 'Closed revenue', hint: 'all sources together' },
+  ];
+  fill('stats', ...tiles.map(t => el('div', { class: 'stat' },
+    el('span', { class: 'stat-value', text: t.value }),
+    el('span', { class: 'stat-label', text: t.label }),
+    el('span', { class: 'stat-hint', text: t.hint }))));
+}
+
 export function renderInsights(id, sentences) {
   fill(id, ...sentences.map(s => el('p', { text: s })));
 }
@@ -132,7 +146,8 @@ export function renderWaterfall(steps) {
   fill('waterfall', table([
     { head: 'Step', get: s => (s.rule === 'START' ? s.label : el('span', {}, el('strong', { text: s.label }))) },
     { head: 'Why', get: s => s.reason },
-    { head: 'Removed', num: true, get: s => (s.rule === 'START' ? '' : `−${s.removed}`) },
+    // "−0" reads like a glitch, so a rule that caught nothing today shows a dash.
+    { head: 'Removed', num: true, get: s => (s.rule === 'START' ? '' : s.removed === 0 ? '—' : `−${s.removed}`) },
     { head: 'Records left', num: true, get: s => el('strong', { text: String(s.remaining) }) },
   ], steps));
 }

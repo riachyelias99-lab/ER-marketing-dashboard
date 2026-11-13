@@ -74,6 +74,16 @@ h3 { font-size: 1rem; margin: 1.25rem 0 0.5rem; }
 .tab[aria-selected="true"] { color: var(--text-primary); border-bottom-color: var(--series-1); }
 .tab:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--series-1); outline-offset: 2px; }
 
+/* Headline numbers. Proportional figures: tabular digits look loose at this size. */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 16px 0 0; }
+.stat {
+  background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 14px; display: flex; flex-direction: column; gap: 1px;
+}
+.stat-value { font-size: 1.7rem; font-weight: 700; line-height: 1.1; }
+.stat-label { font-weight: 600; }
+.stat-hint { color: var(--text-muted); font-size: 0.85rem; }
+
 .card {
   background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px;
   padding: 18px 20px; margin: 16px 0;
@@ -122,6 +132,8 @@ details.table-view summary { cursor: pointer; color: var(--text-secondary); font
 
 @media (max-width: 720px) {
   .advice-grid, .funnel-pair { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat-value { font-size: 1.45rem; }
   .card { padding: 14px 14px; }
   h1 { font-size: 1.15rem; }
 }

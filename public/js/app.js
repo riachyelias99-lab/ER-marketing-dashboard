@@ -66,6 +66,7 @@ async function main() {
   if (latest.mode === 'raw') document.getElementById('raw-banner').hidden = false;
   const today = beirutDay(new Date());
   R.renderTopBar(latest, status);
+  R.renderStats(latest.totals);
   R.renderInsights('advice-insights', latest.insights.advice);
   R.renderAdvice(latest.advice);
   R.renderScorecard(latest.sources);

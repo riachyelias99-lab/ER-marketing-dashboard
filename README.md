@@ -19,12 +19,13 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 
 ## How to read the dashboard (for the owner)
 
-1. **Budget advice:** three cards, *Invest more / Keep steady / Consider cutting*, then a scorecard per source. Start here.
-2. **Lead volume:** how many real leads each source brought.
-3. **Where deals are now:** which of the 8 pipeline stages each source's deals sit in.
-4. **Conversion:** pick two sources and compare how far their leads get, step by step.
-5. **Revenue:** closed revenue per source, plus estimates. ⚠️ means a sale's value looked wrong and wasn't counted.
-6. **Removed records tab:** everything that was left out, and why. **NEW** = caught in the last 7 days.
+1. **Headline numbers:** real leads, how many entered the pipeline, sales won and closed revenue — the size of the business at a glance.
+2. **Budget advice:** three cards, *Invest more / Keep steady / Consider cutting*, then a scorecard per source. Start here.
+3. **Lead volume:** how many real leads each source brought.
+4. **Where deals are now:** which of the 8 pipeline stages each source's deals sit in.
+5. **Conversion:** pick two sources and compare how far their leads get, step by step.
+6. **Revenue:** closed revenue per source, plus estimates. ⚠️ means a sale's value looked wrong and wasn't counted.
+7. **Removed records tab:** everything that was left out, and why. **NEW** = caught in the last 7 days.
 
 ## Decisions (one line each, with the reason)
 
