@@ -139,6 +139,17 @@ export function revenueChart(canvas, sources) {
     },
   };
   options.scales.x.ticks.callback = v => money(v);
+  // The ⚠️ beside a source name is painted on the canvas, so it cannot be a
+  // link. Instead the whole row of a flagged source is clickable — bar, name
+  // and mark alike — and the cursor says so on the way in.
+  const flaggedRow = (evt, chart) => {
+    const i = Math.round(chart.scales.y.getValueForPixel(evt.y));
+    return rows[i]?.ignoredWonCount ? i : -1;
+  };
+  options.onClick = (evt, _els, chart) => { if (flaggedRow(evt, chart) >= 0) location.hash = 'ignored'; };
+  options.onHover = (evt, _els, chart) => {
+    chart.canvas.style.cursor = flaggedRow(evt, chart) >= 0 ? 'pointer' : 'default';
+  };
   return make(canvas, rows.length, {
     type: 'bar',
     data: { labels: rows.map(s => (s.ignoredWonCount ? `${s.source} ⚠️` : s.source)), datasets: [{ label: 'Closed revenue', data: rows.map(s => s.revenue), ...barStyle(css('--series-1')) }] },

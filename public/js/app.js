@@ -18,13 +18,18 @@ function showView(name) {
   for (const v of ['overview', 'removed']) document.getElementById(v).hidden = v !== name;
 }
 
-const viewFromHash = () => (location.hash === '#removed' ? 'removed' : 'overview');
+// #removed opens that view at the top; #ignored opens it at the list of deal
+// values that were left out, which is where every ⚠️ mark points.
+const REMOVED_HASHES = new Set(['#removed', '#ignored']);
+const viewFromHash = () => (REMOVED_HASHES.has(location.hash) ? 'removed' : 'overview');
 
 function routeToHash() {
   showView(viewFromHash());
   // The target section is unhidden only now, so the browser's own jump to the
-  // anchor has already missed it: start the new view at the top by hand.
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  // anchor has already missed it: place the new view by hand.
+  const target = location.hash === '#ignored' ? document.getElementById('sec-ignored') : null;
+  if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+  else window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
 function drawCharts(latest) {
@@ -59,6 +64,8 @@ async function main() {
   if (isRaw) document.getElementById('raw-banner').hidden = false;
   window.addEventListener('hashchange', routeToHash);
   showView(viewFromHash());
+  // A page opened straight on #ignored still needs placing, but only once the
+  // tables below exist, so routeToHash runs again at the end of main().
 
   let latest, status;
   try {
@@ -87,6 +94,10 @@ async function main() {
   R.renderWaterfall(latest.audit.waterfall);
   R.renderRemovedList(latest.audit.removed, latest.audit.waterfall, today);
   R.renderIgnoredList(latest.audit.ignoredValues, today);
+
+  // Now that those tables have height, a page opened straight on #ignored can
+  // be placed on the right section.
+  if (REMOVED_HASHES.has(location.hash)) routeToHash();
 
   setupFunnelPicker(latest);
   const draw = () => (window.Chart ? drawCharts(latest) : window.addEventListener('load', () => drawCharts(latest), { once: true }));

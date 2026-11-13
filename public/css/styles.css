@@ -370,6 +370,15 @@ main { padding-bottom: 72px; }
   border-radius: 999px; padding: 1px 9px; white-space: nowrap;
 }
 .badge-warn { background: var(--warn-bg); color: var(--warn-ink); }
+/* A warning mark that leads somewhere is underlined, so it reads as a way in
+   rather than as decoration. */
+a.badge-warn {
+  color: var(--warn-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a.badge-warn:hover { text-decoration-thickness: 2px; }
 .badge-new { background: var(--new-bg); color: var(--new-ink); font-weight: 600; }
 td .badge, .rung-name .badge { margin-left: 3px; }
 

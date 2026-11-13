@@ -86,6 +86,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 - **The ±25% band is explained in words, not shaded on the ladder.** On a near-opaque panel the tint read as a second, ghostly bar, and the verdict was already carried by the bar's colour and its label.
 - **Frosted panels over a lit field, but the panels stay near-opaque where numbers live**, so text and chart contrast cannot drift as the background passes behind them.
 - **The pipeline is pinned by its id**, not just its name, because anyone in the shared sandbox could create another "Sales Pipeline".
+- **Every ⚠️ mark leads to the deal it is about.** A warning that an owner cannot act on is just worry, so each mark links to the list of ignored dollar values. In the revenue chart the mark is painted on the canvas and cannot be a link, so the whole row of a flagged source is clickable and the cursor changes on the way in. "Too few leads to judge" stays a plain mark: it is not a data fault and there is nothing to show.
 
 ## Data quality results (current data)
 

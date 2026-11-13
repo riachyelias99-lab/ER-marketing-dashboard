@@ -19,6 +19,10 @@ export function el(tag, props = {}, ...children) {
 }
 const fill = (id, ...nodes) => { const n = document.getElementById(id); n.replaceChildren(...nodes); return n; };
 const badge = (text, kind = 'warn') => el('span', { class: `badge badge-${kind}`, text });
+// A warning mark is a promise that the detail exists somewhere. Every mark
+// about an ignored dollar value is a link to the list of those values.
+const IGNORED_HASH = '#ignored';
+const badgeLink = (text, href = IGNORED_HASH) => el('a', { class: 'badge badge-warn', href, text });
 
 /** Table from column specs: [{ head, get(row) → string|Node, num? }]. */
 export function table(columns, rows, rowClass = () => null) {
@@ -69,8 +73,10 @@ const VERDICT = {
   notJudged: { label: 'Not judged', css: 'is-unjudged' },
 };
 // The ladder has room for a short mark only; the full wording lives in the
-// sentence above it and in "How these numbers were worked out".
-const shortBadge = b => (!b ? null : /few leads/i.test(b) ? 'Too few leads' : 'Revenue understated');
+// sentence below it and in "How these numbers were worked out".
+const shortBadge = b =>
+  (!b ? null : /few leads/i.test(b) ? { text: 'Too few leads' } : { text: 'Revenue understated', href: IGNORED_HASH });
+const mark = m => (!m ? null : m.href ? badgeLink(m.text, m.href) : badge(m.text));
 
 /**
  * Every source on one scale: bar = revenue per lead, with a line at the agency
@@ -87,10 +93,10 @@ export function renderLadder(advice, sources) {
 
   const rungs = sources.map(s => {
     const v = verdicts.get(s.source) ?? { key: 'notJudged' };
-    const mark = shortBadge(v.badge) ?? (v.key === 'notJudged' ? v.reason : null);
+    const note = shortBadge(v.badge) ?? (v.key === 'notJudged' && v.reason ? { text: v.reason } : null);
     return el('li', { class: `rung ${VERDICT[v.key].css}`, style: `--w:${at(s.revenuePerLead)}` },
       el('div', { class: 'rung-name' },
-        el('span', { class: 'rung-channel' }, s.source, mark ? badge(mark) : null),
+        el('span', { class: 'rung-channel' }, s.source, mark(note)),
         el('span', { class: 'verdict', text: VERDICT[v.key].label })),
       el('div', { class: 'rung-plot' }, el('div', { class: 'rung-bar' })),
       el('div', { class: 'rung-value', text: money(s.revenuePerLead) }));
@@ -106,8 +112,10 @@ export function renderLadder(advice, sources) {
 
 function sourceBadges(s) {
   return [
+    // "Too few leads" is not a data fault and has nothing to show in the
+    // removed list, so it stays a plain mark.
     s.smallSample ? badge('⚠️ Too few leads to judge') : null,
-    s.ignoredWonCount ? badge(`⚠️ ${s.ignoredWonCount} sale value ignored`) : null,
+    s.ignoredWonCount ? badgeLink(`⚠️ ${s.ignoredWonCount} sale value ignored`) : null,
   ];
 }
 
