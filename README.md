@@ -1,6 +1,6 @@
 # ER Marketing Dashboard
 
-**Live dashboard:** _link added after deployment_
+**Live dashboard: https://er-marketing-dashboard.vercel.app**
 
 A dashboard an agency owner opens on Monday morning to see **where next month's marketing budget should go**. It compares every lead source on lead volume, pipeline progress, conversion and closed revenue, using data pulled from GoHighLevel (GHL) every day and cleaned before anything is shown.
 
