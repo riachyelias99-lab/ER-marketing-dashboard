@@ -35,8 +35,8 @@ Close everything else. Mute notifications.
 ### 0:00 – 0:25 · The answer first
 **Tab 1, top of page.**
 
-> "This is a marketing dashboard for an agency owner. All the data comes from GoHighLevel, it refreshes itself every morning, and it answers one question: where should next month's budget go?
-> Two hundred and ninety-four real leads, twenty-eight of them became clients, worth a hundred and ninety thousand dollars."
+> "This is a marketing dashboard for an agency owner. All the data comes from GoHighLevel and it refreshes itself every morning.
+> Two hundred and ninety-four real leads, twenty-eight of them became clients, worth a hundred and ninety thousand dollars. And underneath, the question the owner actually has: where should the money be invested?"
 
 ### 0:25 – 0:55 · The ladder
 **Scroll to the ladder. Point at the vertical line.**
@@ -51,13 +51,13 @@ Close everything else. Mute notifications.
 > "Underneath, the evidence, in order. How many leads each source brought. Where those deals sit across the eight pipeline stages — green is won, blue is still moving, grey is dead. How far leads get, where you can compare any two sources side by side. And what each source actually earned."
 
 ### 1:25 – 2:05 · Hard case one: the data is dirty
-**Tab 3 (the raw version), then Tab 1, then follow its "see why" link.**
+**Tab 3 (the raw version), then Tab 1, then click one of the ⚠️ marks.**
 
 > "Now the hard part. Here is the same dashboard with the cleaning switched off. It says the agency earned four hundred and eighty thousand dollars, and it tells you to invest in Facebook Ad.
 > Both are wrong. Facebook Ad has one deal recorded at a hundred and forty-five thousand dollars, when every real deal is between fifteen hundred and twelve thousand. It's a typing mistake.
 > And it would have cut Webinar and LinkedIn Outreach — two of the four sources that actually deserve more budget.
 > Everything removed is listed here, with the reason. Four hundred and twenty records down to two hundred and ninety-four: sixty-five belonging to other users of the shared sandbox, thirty-three demo records, fifteen internal contacts, twelve duplicates.
-> The sale still counts. Only the broken dollar amount is left out — and the dashboard says so, instead of guessing a number."
+> The sale still counts; only the broken dollar amount is left out. And the dashboard says so instead of guessing — every warning mark clicks straight through to the deal behind it."
 
 ### 2:05 – 2:35 · Hard case two: a broken morning
 **Tab 2 (the paused note), then Tab 4 (GitHub).**
@@ -93,5 +93,7 @@ Close everything else. Mute notifications.
 | Automated tests | 95 |
 | Best / worst per lead | Instagram Ad $1,086 · Facebook Ad $189 |
 | Most leads | Referral, 46 — but only $418 a lead |
+| Uncleaned view also shows | 355 leads, and 3 sources that aren't real: Instagram DM, Website, Unknown source |
+| Uncleaned verdicts | Invest in Facebook Ad; cut Webinar and LinkedIn Outreach |
 
 **If someone asks why the uncleaned view shows 355 leads, not 420:** the uncleaned view still leaves out the 65 records belonging to other users of the shared sandbox — those are not the agency's data in any version. Everything else is switched off: demo records, internal contacts, duplicates and the broken dollar values are all left in.
