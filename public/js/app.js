@@ -12,11 +12,19 @@ async function getJson(file) {
   return res.json();
 }
 
-function showTab(name) {
-  for (const t of ['overview', 'removed']) {
-    document.getElementById(t).hidden = t !== name;
-    document.getElementById(`tab-${t}`).setAttribute('aria-selected', String(t === name));
-  }
+// Two views, no tab bar: the removed records are reached only from the "see why"
+// and "review" links, which set #removed, and left again by the back link.
+function showView(name) {
+  for (const v of ['overview', 'removed']) document.getElementById(v).hidden = v !== name;
+}
+
+const viewFromHash = () => (location.hash === '#removed' ? 'removed' : 'overview');
+
+function routeToHash() {
+  showView(viewFromHash());
+  // The target section is unhidden only now, so the browser's own jump to the
+  // anchor has already missed it: start the new view at the top by hand.
+  window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
 function drawCharts(latest) {
@@ -49,10 +57,8 @@ function setupFunnelPicker(latest) {
 
 async function main() {
   if (isRaw) document.getElementById('raw-banner').hidden = false;
-  document.getElementById('tab-overview').addEventListener('click', () => { history.replaceState(null, '', location.pathname + location.search); showTab('overview'); });
-  document.getElementById('tab-removed').addEventListener('click', () => { location.hash = 'removed'; });
-  window.addEventListener('hashchange', () => showTab(location.hash === '#removed' ? 'removed' : 'overview'));
-  showTab(location.hash === '#removed' ? 'removed' : 'overview');
+  window.addEventListener('hashchange', routeToHash);
+  showView(viewFromHash());
 
   let latest, status;
   try {

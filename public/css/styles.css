@@ -220,7 +220,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 /* ── Masthead: bare on the field, so the panels have something to float over ─ */
-.masthead { padding: 52px 0 0; }
+.masthead { padding: 52px 0 10px; }
 .masthead h1 { max-width: 18ch; }
 
 .meta { color: var(--ink-2); margin: 10px 0 0; }
@@ -256,15 +256,11 @@ a:hover { text-decoration-thickness: 2px; }
 .measure-label { display: block; font-weight: 600; margin-top: 4px; }
 .measure-hint { display: block; color: var(--ink-3); font-size: 0.86rem; }
 
-.tabs { display: flex; gap: 28px; margin: 30px 0 0; border-bottom: 1px solid var(--rule); }
-.tab {
-  appearance: none; background: none; border: 0; cursor: pointer;
-  font: inherit; font-weight: 600; color: var(--ink-3);
-  padding: 0 0 11px; margin-bottom: -1px;
-  border-bottom: 2px solid transparent;
-}
-.tab:hover { color: var(--ink); }
-.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+/* The records that were left out are not a second half of the dashboard, so
+   they get no tab of their own: the "see why" links lead in, this leads back. */
+.backlink { margin: 26px 0 0; }
+.backlink a { font-weight: 600; }
+.backlink a::before { content: "← "; }
 
 /* ── Blocks ──────────────────────────────────────────────────────────────── */
 main { padding-bottom: 72px; }
@@ -302,6 +298,10 @@ main { padding-bottom: 72px; }
 
 .insights { margin: 16px 0 0; max-width: 68ch; color: var(--ink-2); }
 .insights p + p { margin-top: 7px; }
+
+/* The ladder comes first in the hero and the wording follows it, so the text
+   needs room below the chart rather than the usual gap under a heading. */
+#ladder + .sub { margin-top: 26px; }
 
 /* ── The ladder: the one bold thing on the page ──────────────────────────── */
 .ladder { --name-col: 13.5rem; --gap: 18px; margin: 24px 0 0; }

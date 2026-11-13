@@ -153,7 +153,7 @@ export function renderRevenueTable(sources) {
 export function renderFooter(latest) {
   const a = latest.audit;
   const items = [
-    ['Lead', 'A real person who contacted the agency, after removing other users\' records, demo/test entries, internal contacts and duplicates (see the Removed records tab).'],
+    ['Lead', 'A real person who contacted the agency, after removing other users\' records, demo/test entries, internal contacts and duplicates — the "see why" link at the top lists every one.'],
     ['Source', 'Where the lead came from, as recorded in GoHighLevel. Each lead counts for exactly one source.'],
     ['Revenue per lead', 'Closed revenue of a source ÷ its number of leads. This is the budget yardstick, because there is no ad-spend data to compare against.'],
     ['Budget advice', `Sources at least 25% above the agency average (${money(latest.advice.average)} per lead) → Invest more; at least 25% below → Consider cutting; in between → Keep steady. Sources with fewer than 20 leads are not judged.`],

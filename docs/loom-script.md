@@ -51,7 +51,7 @@ Close everything else. Mute notifications.
 > "Underneath, the evidence, in order. How many leads each source brought. Where those deals sit across the eight pipeline stages — green is won, blue is still moving, grey is dead. How far leads get, where you can compare any two sources side by side. And what each source actually earned."
 
 ### 1:25 – 2:05 · Hard case one: the data is dirty
-**Tab 3 (the raw version), then Tab 1, then the "What we left out" tab.**
+**Tab 3 (the raw version), then Tab 1, then follow its "see why" link.**
 
 > "Now the hard part. Here is the same dashboard with the cleaning switched off. It says the agency earned four hundred and eighty thousand dollars, and it tells you to invest in Facebook Ad.
 > Both are wrong. Facebook Ad has one deal recorded at a hundred and forty-five thousand dollars, when every real deal is between fifteen hundred and twelve thousand. It's a typing mistake.

@@ -25,7 +25,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 4. **Where deals are now:** which of the 8 pipeline stages each source's deals sit in.
 5. **Conversion:** pick two sources and compare how far their leads get, step by step.
 6. **Revenue:** closed revenue per source, plus estimates. ⚠️ means a sale's value looked wrong and wasn't counted.
-7. **Removed records tab:** everything that was left out, and why. **NEW** = caught in the last 7 days.
+7. **Records left out:** follow the **see why** link under the date for everything that was excluded, and why. **NEW** = caught in the last 7 days. "Back to the dashboard" returns.
 
 ## Decisions (one line each, with the reason)
 

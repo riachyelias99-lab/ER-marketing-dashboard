@@ -21,21 +21,17 @@
     <h1>Marketing Dashboard</h1>
     <div id="topbar"></div>
     <div id="stats" class="measure panel"></div>
-    <nav class="tabs" aria-label="Sections">
-      <button type="button" class="tab" id="tab-overview" aria-controls="overview">The answer</button>
-      <button type="button" class="tab" id="tab-removed" aria-controls="removed">What we left out</button>
-    </nav>
   </header>
 
   <main class="wrap">
     <div id="load-error" class="note note-warn" hidden>The dashboard data could not be loaded. Refresh the page in a few minutes.</div>
 
-    <section id="overview" class="tabpanel" aria-labelledby="tab-overview">
+    <section id="overview" class="view">
       <section class="block block-hero panel" id="sec-advice">
         <h2>Where should the money be invested?</h2>
+        <div id="ladder"></div>
         <p class="sub">Each source is measured on one scale: <strong>revenue per lead</strong>, meaning how much closed revenue one lead from that source brought, on average. Sources well above the agency average earn more budget; sources well below it earn less.</p>
         <div id="advice-insights" class="insights"></div>
-        <div id="ladder"></div>
       </section>
 
       <section class="block panel" id="sec-scorecard">
@@ -89,7 +85,8 @@
       </section>
     </section>
 
-    <section id="removed" class="tabpanel" aria-labelledby="tab-removed" hidden>
+    <section id="removed" class="view" aria-label="Records left out" hidden>
+      <p class="backlink"><a href="#">Back to the dashboard</a></p>
       <section class="block panel">
         <h2>From everything downloaded to real leads</h2>
         <p class="sub">The shared sandbox holds other people's records and some junk. Each step removes one kind, and no record is removed twice.</p>
