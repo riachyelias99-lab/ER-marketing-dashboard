@@ -32,40 +32,40 @@ Close everything else. Mute notifications.
 
 ## The script
 
-### 0:00 – 0:25 · The answer first
+### 0:00 – 0:22 · The answer first
 **Tab 1, top of page.**
 
 > "This is a marketing dashboard for an agency owner. All the data comes from GoHighLevel and it refreshes itself every morning.
 > Two hundred and ninety-four real leads, twenty-eight of them became clients, worth a hundred and ninety thousand dollars. And underneath, the question the owner actually has: where should the money be invested?"
 
-### 0:25 – 0:55 · The ladder
+### 0:22 – 0:57 · The ladder
 **Scroll to the ladder. Point at the vertical line.**
 
-> "Every source sits on one scale. The bar is how much revenue one lead from that source is worth. This line is the agency average — six hundred and forty-nine dollars.
-> Instagram Ad and Billboard are above it, around a thousand and eighty dollars a lead, so that's where the money goes. Google Search, Referral and Website Form fall short.
-> And look at Referral: it brings the *most* leads, forty-six of them, more than any other source — but each one is worth four hundred and eighteen dollars, well under the average. Counting leads alone would have sent the budget to the wrong place."
+> "Every source sits on one scale: how much revenue one lead from it is worth. This line is the agency average — six hundred and forty-nine dollars.
+> Instagram Ad and Billboard clear it at about a thousand and eighty a lead, so that's where the money goes.
+> And look at Referral. It brings the most leads — forty-six, more than anything else — but each is worth four hundred and eighteen, well under the average. Counting leads alone would have sent the budget to the wrong place."
 
-### 0:55 – 1:25 · The evidence
+### 0:57 – 1:18 · The evidence
 **Scroll through sections 1 to 4, roughly five seconds each.**
 
 > "Underneath, the evidence, in order. How many leads each source brought. Where those deals sit across the eight pipeline stages — green is won, blue is still moving, grey is dead. How far leads get, where you can compare any two sources side by side. And what each source actually earned."
 
-### 1:25 – 2:05 · Hard case one: the data is dirty
+### 1:18 – 2:06 · Hard case one: the data is dirty
 **Tab 3 (the raw version), then Tab 1, then click one of the ⚠️ marks.**
 
-> "Now the hard part. Here is the same dashboard with the cleaning switched off. It says the agency earned four hundred and eighty thousand dollars, and it tells you to invest in Facebook Ad.
-> Both are wrong. Facebook Ad has one deal recorded at a hundred and forty-five thousand dollars, when every real deal is between fifteen hundred and twelve thousand. It's a typing mistake.
-> And it would have cut Webinar and LinkedIn Outreach — two of the four sources that actually deserve more budget.
-> Everything removed is listed here, with the reason. Four hundred and twenty records down to two hundred and ninety-four: sixty-five belonging to other users of the shared sandbox, thirty-three demo records, fifteen internal contacts, twelve duplicates.
-> The sale still counts; only the broken dollar amount is left out. And the dashboard says so instead of guessing — every warning mark clicks straight through to the deal behind it."
+> "Now the hard part. Here is the same dashboard with the cleaning switched off. It claims four hundred and eighty thousand dollars, and tells you to invest in Facebook Ad.
+> Both wrong. Facebook Ad has one deal typed as a hundred and forty-five thousand, when every real deal is between fifteen hundred and twelve thousand.
+> It would also cut Webinar and LinkedIn Outreach — two of the four best channels.
+> Everything removed is listed with its reason: four hundred and twenty records down to two hundred and ninety-four. Other users' records, demo data, internal contacts, duplicates.
+> The sale still counts; only the broken amount is left out. And every warning mark clicks through to the deal behind it."
 
-### 2:05 – 2:35 · Hard case two: a broken morning
+### 2:06 – 2:29 · Hard case two: a broken morning
 **Tab 2 (the paused note), then Tab 4 (GitHub).**
 
 > "Second hard case: what if GoHighLevel sends bad data? I tested that. Six health checks run before anything is published. If one fails, nothing new goes out — the owner keeps yesterday's correct numbers and sees this note telling them why.
 > That's the run that produced it, and it shows red so I get an email."
 
-### 2:35 – 2:55 · How it runs, and the key
+### 2:29 – 2:50 · How it runs, and the key
 **Tab 4, then Tab 5.**
 
 > "Every morning at six, GitHub runs the tests first, then fetches, cleans and publishes. The API key lives in GitHub's secrets — it never reaches the browser, and a test fails the build if it ever appears in the code.
