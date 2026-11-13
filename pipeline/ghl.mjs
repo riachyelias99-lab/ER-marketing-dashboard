@@ -1,13 +1,15 @@
 // Read-only GoHighLevel client. Only GET requests to three endpoints (spec §5).
 
-const BASE = 'https://services.leadconnectorhq.com';
+const DEFAULT_BASE = 'https://services.leadconnectorhq.com';
 const MAX_ATTEMPTS = 5;
 
 /**
  * Download pipelines, all contacts and all opportunities for one location.
+ * `baseUrl` exists so tests can point at a local stand-in server; in normal use it is GHL.
  * @returns {Promise<{pipelines, contacts, opportunities, totals: {contacts:number, opportunities:number}}>}
  */
-export async function fetchAll({ apiKey, locationId, fetchImpl = fetch, sleep = ms => new Promise(r => setTimeout(r, ms)) }) {
+export async function fetchAll({ apiKey, locationId, baseUrl = DEFAULT_BASE, fetchImpl = fetch, sleep = ms => new Promise(r => setTimeout(r, ms)) }) {
+  const BASE = String(baseUrl).replace(/\/+$/, '');
   if (!apiKey || !locationId) throw new Error('GHL_API_KEY and GHL_LOCATION_ID must be set');
   // A stray newline/space in a saved secret would make fetch echo the whole header in its error.
   if (/[\s\x00-\x1f\x7f]/.test(apiKey) || /[\s\x00-\x1f\x7f]/.test(locationId)) {

@@ -22,6 +22,8 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    # Safety net: a stuck run can never burn hours of CI time.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 

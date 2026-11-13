@@ -74,7 +74,7 @@ export async function run({ argv = [], env = {}, now = new Date(), fetchImpl = f
   let raw;
   try {
     raw = opts.fromFile ? loadFromFiles(opts.fromFile)
-      : await fetchAll({ apiKey: env.GHL_API_KEY, locationId: env.GHL_LOCATION_ID, fetchImpl });
+      : await fetchAll({ apiKey: env.GHL_API_KEY, locationId: env.GHL_LOCATION_ID, baseUrl: env.GHL_BASE_URL || undefined, fetchImpl });
   } catch (err) {
     return fail([`Could not reach GHL (${err.message})`], [{ id: 'B0', level: 'fail', ok: false, message: 'Could not reach GHL' }]);
   }
@@ -131,7 +131,11 @@ export async function run({ argv = [], env = {}, now = new Date(), fetchImpl = f
 
 // CLI entry. Prints only counts and messages — never the key or location id.
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  // Say the last word, wait for it to be flushed, then stop. Without the explicit exit the
+  // process can linger on a connection the API server is holding open (seen on CI's Node 22),
+  // long after every file has been written. All writes are synchronous, so nothing is lost.
+  const finish = (stream, message, code) => stream.write(`${message}\n`, () => process.exit(code));
   run({ argv: process.argv.slice(2), env: process.env })
-    .then(r => console.log(`Run finished: ${r.result}${r.latestWritten ? ' (new data published)' : ' (kept previous data)'}`))
-    .catch(err => { console.error(`Run crashed: ${err.message}`); process.exit(1); });
+    .then(r => finish(process.stdout, `Run finished: ${r.result}${r.latestWritten ? ' (new data published)' : ' (kept previous data)'}`, 0))
+    .catch(err => finish(process.stderr, `Run crashed: ${err.message}`, 1));
 }
