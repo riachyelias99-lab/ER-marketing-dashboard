@@ -28,7 +28,7 @@ export function table(columns, rows, rowClass = () => null) {
 }
 
 export function renderTopBar(latest, status) {
-  const nodes = [el('p', { class: 'meta' }, 'Marketing performance, updated ',
+  const nodes = [el('p', { class: 'meta' }, 'Updated ',
     el('strong', { text: beirutDateTime(status?.lastSuccess ?? latest.generatedAt) }), ', Beirut time.')];
   if (status && status.result !== 'pass') for (const note of status.notes ?? []) nodes.push(el('div', { class: 'note note-warn', role: 'status', text: `⚠️ ${note}` }));
   const a = latest.audit;
@@ -73,8 +73,8 @@ const VERDICT = {
 const shortBadge = b => (!b ? null : /few leads/i.test(b) ? 'Too few leads' : 'Revenue understated');
 
 /**
- * Every source on one scale: bar = revenue per lead, a line at the agency average,
- * and the ±25% band shaded. Position carries the verdict, the word confirms it.
+ * Every source on one scale: bar = revenue per lead, with a line at the agency
+ * average. Position carries the verdict, colour and the word confirm it.
  */
 export function renderLadder(advice, sources) {
   const verdicts = new Map();
@@ -98,7 +98,7 @@ export function renderLadder(advice, sources) {
 
   fill('ladder', el('div', {
     class: `ladder${hasAverage ? ' has-average' : ''}`,
-    style: hasAverage ? `--avg:${at(average)};--lo:${at(average * 0.75)};--hi:${at(average * 1.25)}` : null,
+    style: hasAverage ? `--avg:${at(average)}` : null,
   },
   hasAverage ? el('div', { class: 'ladder-scale' }, el('span', { text: `Agency average, ${money(average)} per lead` })) : null,
   el('ol', { class: 'rungs' }, rungs)));

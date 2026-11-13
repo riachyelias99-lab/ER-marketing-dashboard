@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marketing Performance — Where should next month's budget go?</title>
-  <meta name="description" content="Where should next month's marketing budget go? Leads, pipeline, conversion and revenue by source.">
+  <title>Marketing Dashboard</title>
+  <meta name="description" content="Leads, pipeline, conversion and closed revenue by source, and where next month's budget should go.">
+  <meta name="theme-color" content="#0a1a20" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#dde6ec" media="(prefers-color-scheme: light)">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js" defer></script>
   <script type="module" src="js/app.js"></script>
@@ -15,39 +17,39 @@
 <body>
   <div id="raw-banner" class="raw-banner" hidden>Raw data — not cleaned. Local preview only.</div>
 
-  <header class="masthead">
-    <h1>Where should next month's budget go?</h1>
+  <header class="masthead wrap">
+    <h1>Marketing Dashboard</h1>
     <div id="topbar"></div>
-    <div id="stats" class="measure"></div>
+    <div id="stats" class="measure panel"></div>
     <nav class="tabs" aria-label="Sections">
       <button type="button" class="tab" id="tab-overview" aria-controls="overview">The answer</button>
       <button type="button" class="tab" id="tab-removed" aria-controls="removed">What we left out</button>
     </nav>
   </header>
 
-  <main>
+  <main class="wrap">
     <div id="load-error" class="note note-warn" hidden>The dashboard data could not be loaded. Refresh the page in a few minutes.</div>
 
     <section id="overview" class="tabpanel" aria-labelledby="tab-overview">
-      <section class="block block-hero" id="sec-advice">
-        <h2>Every source, measured against one line</h2>
-        <p class="sub">The line is <strong>revenue per lead</strong>: how much closed revenue one lead from that source brought, on average. Sources well above it earn more budget; sources well below it earn less.</p>
+      <section class="block block-hero panel" id="sec-advice">
+        <h2>Where should the money be invested?</h2>
+        <p class="sub">Each source is measured on one scale: <strong>revenue per lead</strong>, meaning how much closed revenue one lead from that source brought, on average. Sources well above the agency average earn more budget; sources well below it earn less.</p>
         <div id="advice-insights" class="insights"></div>
         <div id="ladder"></div>
       </section>
 
-      <section class="block" id="sec-scorecard">
+      <section class="block panel" id="sec-scorecard">
         <h2>The numbers behind the verdict</h2>
         <div id="scorecard" class="table-wrap"></div>
       </section>
 
-      <section class="block" id="sec-volume">
+      <section class="block panel" id="sec-volume">
         <h2><span class="step">1</span>How many leads each source brought</h2>
         <div id="volume-insights" class="insights"></div>
         <div class="chart-box" id="volume-box"><canvas id="volume-chart" aria-label="Leads by source, bar chart" role="img"></canvas></div>
       </section>
 
-      <section class="block" id="sec-pipeline">
+      <section class="block panel" id="sec-pipeline">
         <h2><span class="step">2</span>Where those deals sit today</h2>
         <p class="sub">Every deal is in exactly one of the 8 stages, so each bar adds up to that source's number of deals.</p>
         <div id="pipeline-insights" class="insights"></div>
@@ -55,7 +57,7 @@
         <details class="table-view"><summary>Show as a table</summary><div id="stage-table" class="table-wrap"></div></details>
       </section>
 
-      <section class="block" id="sec-conversion">
+      <section class="block panel" id="sec-conversion">
         <h2><span class="step">3</span>How far leads get</h2>
         <p class="sub">Each step counts everyone who reached <em>at least</em> that point.</p>
         <div id="conversion-insights" class="insights"></div>
@@ -72,7 +74,7 @@
         <div id="rates-table" class="table-wrap"></div>
       </section>
 
-      <section class="block" id="sec-revenue">
+      <section class="block panel" id="sec-revenue">
         <h2><span class="step">4</span>What each source earned</h2>
         <p class="sub">Closed revenue is the value of deals marked “Closed”. A warning mark means a sale's value looked wrong and was left out of the total.</p>
         <div id="revenue-insights" class="insights"></div>
@@ -88,17 +90,17 @@
     </section>
 
     <section id="removed" class="tabpanel" aria-labelledby="tab-removed" hidden>
-      <section class="block">
+      <section class="block panel">
         <h2>From everything downloaded to real leads</h2>
         <p class="sub">The shared sandbox holds other people's records and some junk. Each step removes one kind, and no record is removed twice.</p>
         <div id="waterfall" class="table-wrap"></div>
       </section>
-      <section class="block">
+      <section class="block panel">
         <h2>Records left out</h2>
         <p class="sub">These looked like this agency's data but were excluded. <span class="badge badge-new">New</span> means caught in the last 7 days.</p>
         <div id="removed-list" class="table-wrap"></div>
       </section>
-      <section class="block">
+      <section class="block panel">
         <h2>Kept, but the dollar value ignored</h2>
         <p class="sub">These people and deals are real and are counted everywhere. Only their dollar value looked wrong, so it is not added to revenue.</p>
         <div id="ignored-list" class="table-wrap"></div>

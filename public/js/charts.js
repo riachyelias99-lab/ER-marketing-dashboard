@@ -57,8 +57,10 @@ const baseOptions = () => ({
   },
 });
 
+// The 2px gap between fills is drawn in the colour the canvas actually sits on
+// — the glass panel, not the page behind it.
 const barStyle = color => ({
-  backgroundColor: color, borderColor: css('--page'), borderWidth: { right: 2 },
+  backgroundColor: color, borderColor: css('--chart-surface'), borderWidth: { right: 2 },
   borderRadius: { topRight: 4, bottomRight: 4 }, borderSkipped: false, maxBarThickness: 18,
 });
 
@@ -85,7 +87,7 @@ export function stageChart(canvas, sources) {
     label: stage,
     data: rows.map(s => s.stageCounts[stage] ?? 0),
     backgroundColor: css(STAGE_COLOR_VAR[stage]),
-    borderColor: css('--page'),
+    borderColor: css('--chart-surface'),
     borderWidth: { right: 2 },
     borderSkipped: false,
     maxBarThickness: 18,

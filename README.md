@@ -20,7 +20,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 ## How to read the dashboard (for the owner)
 
 1. **Headline numbers:** real leads, how many entered the pipeline, sales won and closed revenue — the size of the business at a glance.
-2. **The ladder:** every source on one scale. The bar is its revenue per lead, the vertical line is the agency average, and the shaded band is the ±25% zone where a source counts as steady. Start here.
+2. **The ladder:** every source on one scale. The bar is its revenue per lead and the vertical line is the agency average, so how far above or below the line a source sits is the answer. Start here.
 3. **Lead volume:** how many real leads each source brought.
 4. **Where deals are now:** which of the 8 pipeline stages each source's deals sit in.
 5. **Conversion:** pick two sources and compare how far their leads get, step by step.
@@ -80,6 +80,11 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 - **The API key lives only in GitHub Secrets** (and in a local, git-ignored `.env`). An automated test fails if a key pattern appears in any committable file.
 - **One scale instead of three lists:** sources are ranked on a single axis against the agency average, so how far above or below the line a source sits is visible, not just which group it fell into.
 - **Charts:** colour means something: green = won, blues = still moving, greys = dead ends; "Closed" sits first against the axis (the only directly comparable segment); every chart has labels or a table view. No pie charts.
+- **The stage colours are three ramps, not eight arbitrary hues**, and each was checked with a palette validator against the exact surface it sits on: monotone lightness, a visible gap between steps, and a pale end that still reads against the panel. Light and dark get their own steps rather than one being flipped into the other.
+- **In dark mode, further along the journey = brighter.** The same ramp inverted, because on a dark panel a darker colour recedes, which would have made the most advanced stages the hardest to see.
+- **The two compared funnels are blue and coral**, not blue and violet: violet tested at ΔE 2.0 under deuteranopia, meaning red-green colourblind viewers could not have told the two sources apart.
+- **The ±25% band is explained in words, not shaded on the ladder.** On a near-opaque panel the tint read as a second, ghostly bar, and the verdict was already carried by the bar's colour and its label.
+- **Frosted panels over a lit field, but the panels stay near-opaque where numbers live**, so text and chart contrast cannot drift as the background passes behind them.
 - **The pipeline is pinned by its id**, not just its name, because anyone in the shared sandbox could create another "Sales Pipeline".
 
 ## Data quality results (current data)
