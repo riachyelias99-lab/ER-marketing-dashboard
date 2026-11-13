@@ -21,8 +21,8 @@ function make(canvas, rows, config) {
   charts.get(canvas)?.destroy();
   canvas.parentElement.style.height = `${rows * BAR + 70}px`;
   const Chart = window.Chart;
-  Chart.defaults.font.family = 'system-ui, -apple-system, "Segoe UI", sans-serif';
-  Chart.defaults.color = css('--text-secondary');
+  Chart.defaults.font.family = 'Archivo, system-ui, sans-serif';
+  Chart.defaults.color = css('--ink-2');
   const chart = new Chart(canvas, config);
   charts.set(canvas, chart);
   return chart;
@@ -34,8 +34,8 @@ const endLabels = format => ({
   afterDatasetsDraw(chart) {
     const { ctx, scales: { x, y } } = chart;
     ctx.save();
-    ctx.fillStyle = css('--text-primary');
-    ctx.font = `600 12px ${chart.options.font?.family ?? 'system-ui'}`;
+    ctx.fillStyle = css('--ink');
+    ctx.font = `600 12px ${chart.options.font?.family ?? 'Archivo, system-ui, sans-serif'}`;
     ctx.textBaseline = 'middle';
     chart.data.labels.forEach((_, i) => {
       const { text, value } = format(i);
@@ -52,13 +52,13 @@ const baseOptions = () => ({
   layout: { padding: { right: 90 } },
   plugins: { legend: { display: false }, tooltip: { intersect: false, mode: 'index' } },
   scales: {
-    x: { beginAtZero: true, grid: { color: css('--grid') }, border: { color: css('--axis') }, ticks: { color: css('--text-muted') } },
-    y: { grid: { display: false }, border: { color: css('--axis') }, ticks: { color: css('--text-primary'), autoSkip: false } },
+    x: { beginAtZero: true, grid: { color: css('--rule') }, border: { color: css('--rule-strong') }, ticks: { color: css('--ink-3') } },
+    y: { grid: { display: false }, border: { color: css('--rule-strong') }, ticks: { color: css('--ink'), autoSkip: false } },
   },
 });
 
 const barStyle = color => ({
-  backgroundColor: color, borderColor: css('--surface-1'), borderWidth: { right: 2 },
+  backgroundColor: color, borderColor: css('--page'), borderWidth: { right: 2 },
   borderRadius: { topRight: 4, bottomRight: 4 }, borderSkipped: false, maxBarThickness: 18,
 });
 
@@ -79,13 +79,13 @@ export function stageChart(canvas, sources) {
   const options = baseOptions();
   options.scales.x.stacked = true;
   options.scales.y.stacked = true;
-  options.plugins.legend = { display: true, position: 'top', align: 'start', labels: { boxWidth: 12, boxHeight: 12, color: css('--text-primary') } };
+  options.plugins.legend = { display: true, position: 'top', align: 'start', labels: { boxWidth: 12, boxHeight: 12, color: css('--ink') } };
   options.plugins.tooltip = { mode: 'nearest', intersect: true, callbacks: { label: c => `${c.dataset.label}: ${c.parsed.x} deal${c.parsed.x === 1 ? '' : 's'}` } };
   const datasets = STAGE_ORDER.map(stage => ({
     label: stage,
     data: rows.map(s => s.stageCounts[stage] ?? 0),
     backgroundColor: css(STAGE_COLOR_VAR[stage]),
-    borderColor: css('--surface-1'),
+    borderColor: css('--page'),
     borderWidth: { right: 2 },
     borderSkipped: false,
     maxBarThickness: 18,

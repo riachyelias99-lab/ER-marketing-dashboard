@@ -28,7 +28,8 @@ export function table(columns, rows, rowClass = () => null) {
 }
 
 export function renderTopBar(latest, status) {
-  const nodes = [el('p', { class: 'meta' }, 'Last updated: ', el('strong', { text: beirutDateTime(status?.lastSuccess ?? latest.generatedAt) }), ' (Beirut time)')];
+  const nodes = [el('p', { class: 'meta' }, 'Marketing performance, updated ',
+    el('strong', { text: beirutDateTime(status?.lastSuccess ?? latest.generatedAt) }), ', Beirut time.')];
   if (status && status.result !== 'pass') for (const note of status.notes ?? []) nodes.push(el('div', { class: 'note note-warn', role: 'status', text: `⚠️ ${note}` }));
   const a = latest.audit;
   if (a.newSuspiciousCount > 0) {
@@ -42,40 +43,65 @@ export function renderTopBar(latest, status) {
   fill('topbar', ...nodes);
 }
 
-/** Four headline numbers, so the size of the business is clear before any chart. */
+/** Four headline numbers on one ruled strip, so the size of the business is clear at once. */
 export function renderStats(totals) {
-  const tiles = [
-    { value: String(totals.leads), label: 'Real leads', hint: 'after cleaning' },
-    { value: String(totals.deals), label: 'Entered the pipeline', hint: `${pct(totals.leads ? totals.deals / totals.leads : null)} of leads` },
-    { value: String(totals.sales), label: 'Sales won', hint: `${pct(totals.leads ? totals.sales / totals.leads : null)} of leads` },
-    { value: money(totals.revenue), label: 'Closed revenue', hint: 'all sources together' },
+  const share = n => `${pct(totals.leads ? n / totals.leads : null)} of leads`;
+  const items = [
+    { value: String(totals.leads), label: 'real leads', hint: 'after cleaning' },
+    { value: String(totals.deals), label: 'entered the pipeline', hint: share(totals.deals) },
+    { value: String(totals.sales), label: 'became clients', hint: share(totals.sales) },
+    { value: money(totals.revenue), label: 'closed revenue', hint: 'every source together' },
   ];
-  fill('stats', ...tiles.map(t => el('div', { class: 'stat' },
-    el('span', { class: 'stat-value', text: t.value }),
-    el('span', { class: 'stat-label', text: t.label }),
-    el('span', { class: 'stat-hint', text: t.hint }))));
+  fill('stats', ...items.map(t => el('div', { class: 'measure-item' },
+    el('span', { class: 'measure-value', text: t.value }),
+    el('span', { class: 'measure-label', text: t.label }),
+    el('span', { class: 'measure-hint', text: t.hint }))));
 }
 
 export function renderInsights(id, sentences) {
   fill(id, ...sentences.map(s => el('p', { text: s })));
 }
 
-const CARDS = [
-  { key: 'invest', title: '▲ Invest more' },
-  { key: 'keep', title: '● Keep steady' },
-  { key: 'cut', title: '▼ Consider cutting' },
-];
-export function renderAdvice(advice) {
-  fill('advice-cards', ...CARDS.map(c => el('div', { class: `advice-card ${c.key}` },
-    el('h3', { text: c.title }),
-    advice[c.key].length
-      ? el('ul', {}, advice[c.key].map(i => el('li', {},
-        el('span', { class: 'name' }, i.source, i.badge ? badge(`⚠️ ${i.badge}`) : null),
-        el('span', { class: 'why', text: i.reason }))))
-      : el('p', { class: 'empty', text: 'No sources here right now.' }))));
-  fill('not-judged', ...(advice.notJudged.length
-    ? [el('p', { class: 'sub' }, 'Not judged: ', advice.notJudged.map(i => `${i.source} (${i.badge ?? i.reason})`).join(', '), '.')]
-    : []));
+const VERDICT = {
+  invest: { label: 'Invest more', css: 'is-invest' },
+  keep: { label: 'Keep steady', css: 'is-keep' },
+  cut: { label: 'Consider cutting', css: 'is-cut' },
+  notJudged: { label: 'Not judged', css: 'is-unjudged' },
+};
+// The ladder has room for a short mark only; the full wording lives in the
+// sentence above it and in "How these numbers were worked out".
+const shortBadge = b => (!b ? null : /few leads/i.test(b) ? 'Too few leads' : 'Revenue understated');
+
+/**
+ * Every source on one scale: bar = revenue per lead, a line at the agency average,
+ * and the ±25% band shaded. Position carries the verdict, the word confirms it.
+ */
+export function renderLadder(advice, sources) {
+  const verdicts = new Map();
+  for (const key of Object.keys(VERDICT)) for (const item of advice[key] ?? []) verdicts.set(item.source, { key, ...item });
+
+  const max = Math.max(1, ...sources.map(s => s.revenuePerLead || 0));
+  const at = value => `${Math.max(0, Math.min(100, (value / max) * 100))}%`;
+  const average = advice.average;
+  const hasAverage = Number.isFinite(average) && average > 0;
+
+  const rungs = sources.map(s => {
+    const v = verdicts.get(s.source) ?? { key: 'notJudged' };
+    const mark = shortBadge(v.badge) ?? (v.key === 'notJudged' ? v.reason : null);
+    return el('li', { class: `rung ${VERDICT[v.key].css}`, style: `--w:${at(s.revenuePerLead)}` },
+      el('div', { class: 'rung-name' },
+        el('span', { class: 'rung-channel' }, s.source, mark ? badge(mark) : null),
+        el('span', { class: 'verdict', text: VERDICT[v.key].label })),
+      el('div', { class: 'rung-plot' }, el('div', { class: 'rung-bar' })),
+      el('div', { class: 'rung-value', text: money(s.revenuePerLead) }));
+  });
+
+  fill('ladder', el('div', {
+    class: `ladder${hasAverage ? ' has-average' : ''}`,
+    style: hasAverage ? `--avg:${at(average)};--lo:${at(average * 0.75)};--hi:${at(average * 1.25)}` : null,
+  },
+  hasAverage ? el('div', { class: 'ladder-scale' }, el('span', { text: `Agency average, ${money(average)} per lead` })) : null,
+  el('ol', { class: 'rungs' }, rungs)));
 }
 
 function sourceBadges(s) {

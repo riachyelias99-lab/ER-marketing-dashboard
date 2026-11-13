@@ -68,7 +68,7 @@ async function main() {
   R.renderTopBar(latest, status);
   R.renderStats(latest.totals);
   R.renderInsights('advice-insights', latest.insights.advice);
-  R.renderAdvice(latest.advice);
+  R.renderLadder(latest.advice, latest.sources);
   R.renderScorecard(latest.sources);
   R.renderInsights('volume-insights', latest.insights.volume);
   R.renderInsights('pipeline-insights', latest.insights.pipeline);

@@ -20,7 +20,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 ## How to read the dashboard (for the owner)
 
 1. **Headline numbers:** real leads, how many entered the pipeline, sales won and closed revenue — the size of the business at a glance.
-2. **Budget advice:** three cards, *Invest more / Keep steady / Consider cutting*, then a scorecard per source. Start here.
+2. **The ladder:** every source on one scale. The bar is its revenue per lead, the vertical line is the agency average, and the shaded band is the ±25% zone where a source counts as steady. Start here.
 3. **Lead volume:** how many real leads each source brought.
 4. **Where deals are now:** which of the 8 pipeline stages each source's deals sit in.
 5. **Conversion:** pick two sources and compare how far their leads get, step by step.
@@ -77,6 +77,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 - **GitHub Actions + Vercel:** free, no server to maintain, and Git history doubles as the audit log of every daily run.
 - **Plain HTML + Chart.js, no framework:** fewer moving parts and every file readable. Chart.js is pinned to 4.4.1.
 - **The API key lives only in GitHub Secrets** (and in a local, git-ignored `.env`). An automated test fails if a key pattern appears in any committable file.
+- **One scale instead of three lists:** sources are ranked on a single axis against the agency average, so how far above or below the line a source sits is visible, not just which group it fell into.
 - **Charts:** colour means something: green = won, blues = still moving, greys = dead ends; "Closed" sits first against the axis (the only directly comparable segment); every chart has labels or a table view. No pie charts.
 - **The pipeline is pinned by its id**, not just its name, because anyone in the shared sandbox could create another "Sales Pipeline".
 
