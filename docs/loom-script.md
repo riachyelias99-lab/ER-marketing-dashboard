@@ -1,0 +1,92 @@
+# Loom script — ER Marketing Dashboard (target 2:50, max 3:00)
+
+## Before you hit record
+
+**1. Make the "paused day" evidence.** In GitHub → Actions → Daily dashboard update → **Run workflow** with **Simulate a broken day ticked**. Wait for it to finish (~30s), then open the live site in a tab — it shows the yellow paused note. **Leave that tab alone, do not reload it.**
+
+**2. Put it back to normal.** Run the workflow again with the box **unticked**. Wait for green.
+
+**3. Build the uncleaned version locally.**
+
+```bash
+npm run pipeline:raw
+```
+
+```bash
+npm run preview
+```
+
+**4. Open these tabs, in this order:**
+
+| Tab | What's in it |
+|---|---|
+| 1 | https://er-marketing-dashboard.vercel.app (healthy, reloaded) |
+| 2 | The same site, still showing the **yellow paused note** from step 1 |
+| 3 | http://localhost:8080/?raw=1 — the uncleaned version |
+| 4 | GitHub → Actions, showing both runs |
+| 5 | The repository README |
+
+Close everything else. Mute notifications.
+
+---
+
+## The script
+
+### 0:00 – 0:25 · The answer first
+**Tab 1, top of page.**
+
+> "This is a marketing dashboard for an agency owner. All the data comes from GoHighLevel, it refreshes itself every morning, and it answers one question: where should next month's budget go?
+> Two hundred and ninety-four real leads, twenty-eight of them became clients, worth a hundred and ninety thousand dollars."
+
+### 0:25 – 0:55 · The ladder
+**Scroll to the ladder. Point at the vertical line.**
+
+> "Every source sits on one scale. The bar is how much revenue one lead from that source is worth. This line is the agency average — six hundred and forty-nine dollars.
+> Instagram Ad and Billboard are miles above it, so that's where the money goes. Google Search, Referral and Website Form fall short.
+> And look at Referral: it brings the *most* leads, forty-six of them, but they're the cheapest leads in the business. Volume alone would have sent the budget to the wrong place."
+
+### 0:55 – 1:25 · The evidence
+**Scroll through sections 1 to 4, roughly five seconds each.**
+
+> "Underneath, the evidence, in order. How many leads each source brought. Where those deals sit across the eight pipeline stages — green is won, blue is still moving, grey is dead. How far leads get, where you can compare any two sources side by side. And what each source actually earned."
+
+### 1:25 – 2:05 · Hard case one: the data is dirty
+**Tab 3 (the raw version), then Tab 1, then the "What we left out" tab.**
+
+> "Now the hard part. Here is the same dashboard with no cleaning. It says the agency earned four hundred and eighty thousand dollars, and it tells you to invest in Facebook Ad.
+> Both are wrong. Facebook Ad has one deal recorded at a hundred and forty-five thousand dollars, when every real deal is between fifteen hundred and twelve thousand. It's a typing mistake.
+> Everything removed is listed here, with the reason. Four hundred and twenty records down to two hundred and ninety-four: other students' records, demo data, internal contacts, and twelve duplicates.
+> The sale still counts. Only the broken dollar amount is left out — and the dashboard says so, instead of guessing a number."
+
+### 2:05 – 2:35 · Hard case two: a broken morning
+**Tab 2 (the paused note), then Tab 4 (GitHub).**
+
+> "Second hard case: what if GoHighLevel sends bad data? I tested that. Six health checks run before anything is published. If one fails, nothing new goes out — the owner keeps yesterday's correct numbers and sees this note telling them why.
+> That's the run that produced it, and it shows red so I get an email."
+
+### 2:35 – 2:55 · How it runs, and the key
+**Tab 4, then Tab 5.**
+
+> "Every morning at six, GitHub runs the tests first, then fetches, cleans and publishes. The API key lives in GitHub's secrets — it never reaches the browser, and a test fails the build if it ever appears in the code.
+> Every decision and its reason is in the README. Thanks for watching."
+
+---
+
+## Delivery notes
+
+- **Slow down.** Three minutes feels long when you're nervous and short when you're reading.
+- **Move the mouse to what you're saying.** Point at the average line when you say "average".
+- **Don't read it word for word.** Know the four landmarks: the answer, the ladder, the dirty data, the broken day.
+- If you fluff a line, pause for two seconds and say it again — easier to trim than a muddle.
+- Record at 1920×1080 if you can, and zoom the browser to about 110% so numbers are readable.
+
+## The numbers, if you're asked
+
+| | |
+|---|---|
+| Leads after cleaning | 294 of 420 (126 removed) |
+| Deals / sales / revenue | 204 / 28 / $190,750 |
+| Agency average | $649 per lead |
+| Uncleaned revenue | $480,750 — $290,000 of it fake |
+| Deal values ignored | 7 (six at $145,000, one won deal at $0) |
+| Automated tests | 95 |
