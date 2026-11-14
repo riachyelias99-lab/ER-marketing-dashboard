@@ -8,6 +8,9 @@ export function el(tag, props = {}, ...children) {
     if (v === null || v === undefined || v === false) continue;
     if (k === 'class') node.className = v;
     else if (k === 'text') node.textContent = String(v);
+    // Through the CSSOM, not as a style attribute: the Content-Security-Policy
+    // forbids inline style attributes, and this way needs no exception for them.
+    else if (k === 'style') node.style.cssText = String(v);
     else if (k.startsWith('on')) node.addEventListener(k.slice(2), v);
     else node.setAttribute(k, v === true ? '' : String(v));
   }
