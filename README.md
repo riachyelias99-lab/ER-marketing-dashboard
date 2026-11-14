@@ -12,7 +12,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
                          (quality gate)   + audit log   insight text       in the repo
 ```
 
-- **Every morning** (GitHub Actions, 04:00 UTC = 06:00 Beirut in winter, 07:00 in summer), a Node.js program runs the 5 steps.
+- **Every morning** (GitHub Actions, 04:23 UTC = 06:23 Beirut in winter, 07:23 in summer), a Node.js program runs the 5 steps. GitHub schedules are best-effort and can be late, so the dashboard always shows the date of the data it is displaying, and the run can be started by hand from the Actions tab at any time.
 - **If the health checks pass**, it commits fresh data files to `public/data/`. Vercel redeploys the page automatically.
 - **If a check fails** (e.g. GHL sent incomplete data), it publishes nothing new. The page keeps yesterday's numbers and shows a yellow note with the "last updated" date.
 - **The page is static.** It only reads the published JSON, never calls GHL, and never sees the API key.

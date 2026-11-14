@@ -2,9 +2,12 @@ name: Daily dashboard update
 
 on:
   schedule:
-    # 04:00 UTC = 06:00 in Beirut in winter (UTC+2), 07:00 in summer (UTC+3).
-    # GitHub may start scheduled runs a few minutes late.
-    - cron: '0 4 * * *'
+    # 04:23 UTC = 06:23 in Beirut in winter (UTC+2), 07:23 in summer (UTC+3).
+    # Deliberately NOT on the hour. GitHub queues every ":00" cron on the
+    # platform at the same moment, and runs in that queue are started late or
+    # dropped entirely under load — this one was scheduled for 04:00 and never
+    # fired at all. An odd minute sits outside the stampede.
+    - cron: '23 4 * * *'
   workflow_dispatch:
     inputs:
       simulate_failure:

@@ -68,7 +68,7 @@ Close everything else. Mute notifications.
 ### 2:29 – 2:50 · How it runs, and the key
 **Tab 4, then Tab 5.**
 
-> "Every morning at six, GitHub runs the tests first, then fetches, cleans and publishes. The API key lives in GitHub's secrets — it never reaches the browser, and a test fails the build if it ever appears in the code.
+> "Every morning, GitHub runs the tests first, then fetches, cleans and publishes. The API key lives in GitHub's secrets — it never reaches the browser, and a test fails the build if it ever appears in the code.
 > Every decision and its reason is in the README. Thanks for watching."
 
 ---
