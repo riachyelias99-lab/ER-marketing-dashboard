@@ -110,6 +110,50 @@ export function renderLadder(advice, sources) {
   el('ol', { class: 'rungs' }, rungs)));
 }
 
+const VERDICT_GROUPS = [
+  { key: 'invest', label: 'Invest more', css: 'is-invest' },
+  { key: 'keep', label: 'Keep steady', css: 'is-keep' },
+  { key: 'cut', label: 'Consider cutting', css: 'is-cut' },
+];
+
+/**
+ * The decision in one glance. The ladder above shows how far apart the sources
+ * are; this says what to do about it, grouped and in the owner's own terms.
+ * Caveats go underneath in small type so they never crowd the answer.
+ */
+export function renderVerdicts(advice) {
+  const flag = source =>
+    el('a', {
+      class: 'badge badge-warn',
+      href: IGNORED_HASH,
+      text: '⚠️',
+      'aria-label': `${source}: why its revenue may be understated`,
+    });
+
+  const column = g => {
+    const items = advice[g.key] ?? [];
+    return el('div', { class: `verdict-group ${g.css}` },
+      el('p', { class: 'verdict-head', text: g.label }),
+      items.length
+        ? el('ul', { class: 'verdict-list' },
+          items.map(i => el('li', {}, i.source, i.badge ? flag(i.source) : null)))
+        : el('p', { class: 'verdict-none', text: 'None' }));
+  };
+
+  const notes = [];
+  for (const g of VERDICT_GROUPS) {
+    for (const i of advice[g.key] ?? []) {
+      if (i.badge) notes.push(el('p', { class: 'verdict-note' }, `${i.source}: ${i.badge}. `, el('a', { href: IGNORED_HASH, text: 'See the deal' }), '.'));
+    }
+  }
+  const unjudged = advice.notJudged ?? [];
+  if (unjudged.length) {
+    notes.push(el('p', { class: 'verdict-note', text: `Not judged yet: ${unjudged.map(u => u.source).join(', ')}. Too few leads to be fair to them.` }));
+  }
+
+  fill('verdicts', el('div', { class: 'verdicts' }, VERDICT_GROUPS.map(column)), ...notes);
+}
+
 function sourceBadges(s) {
   return [
     // "Too few leads" is not a data fault and has nothing to show in the

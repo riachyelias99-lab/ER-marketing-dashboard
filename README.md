@@ -20,7 +20,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 ## How to read the dashboard (for the owner)
 
 1. **Headline numbers:** real leads, how many entered the pipeline, sales won and closed revenue — the size of the business at a glance.
-2. **The ladder:** every source on one scale. The bar is its revenue per lead and the vertical line is the agency average, so how far above or below the line a source sits is the answer. Start here.
+2. **The ladder, then the verdict:** every source on one scale — the bar is its revenue per lead, the vertical line is the agency average. Underneath, the same answer grouped into three columns: invest more, keep steady, consider cutting. Start here.
 3. **Lead volume:** how many real leads each source brought.
 4. **Where deals are now:** which of the 8 pipeline stages each source's deals sit in.
 5. **Conversion:** pick two sources and compare how far their leads get, step by step.
@@ -86,6 +86,7 @@ GHL API ──► 1. FETCH ──► 2. VALIDATE ──► 3. CLEAN ──► 4.
 - **The ±25% band is explained in words, not shaded on the ladder.** On a near-opaque panel the tint read as a second, ghostly bar, and the verdict was already carried by the bar's colour and its label.
 - **Frosted panels over a lit field, but the panels stay near-opaque where numbers live**, so text and chart contrast cannot drift as the background passes behind them.
 - **The pipeline is pinned by its id**, not just its name, because anyone in the shared sandbox could create another "Sales Pipeline".
+- **The answer is a list, not a paragraph.** Under the ladder, the verdict is three short columns of channel names in large type, rather than sentences repeating the per-lead figures the bars already show. The owner should be able to read the decision without reading prose; the method and the caveats stay underneath in fine print.
 - **Every ⚠️ mark leads to the deal it is about.** A warning that an owner cannot act on is just worry, so each mark links to the list of ignored dollar values. In the revenue chart the mark is painted on the canvas and cannot be a link, so the whole row of a flagged source is clickable and the cursor changes on the way in. "Too few leads to judge" stays a plain mark: it is not a data fault and there is nothing to show.
 
 ## Data quality results (current data)

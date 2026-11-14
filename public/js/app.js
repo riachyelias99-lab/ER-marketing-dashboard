@@ -80,7 +80,7 @@ async function main() {
   const today = beirutDay(new Date());
   R.renderTopBar(latest, status);
   R.renderStats(latest.totals);
-  R.renderInsights('advice-insights', latest.insights.advice);
+  R.renderVerdicts(latest.advice);
   R.renderLadder(latest.advice, latest.sources);
   R.renderScorecard(latest.sources);
   R.renderInsights('volume-insights', latest.insights.volume);
