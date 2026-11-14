@@ -51,10 +51,10 @@ Snapshot totals: 420 contacts, 286 deals, 21 pipelines.
   - 12 duplicate pairs, e.g. `fadi.gerges161@example.com` and `fadi.gerges161.2@example.com`. The copy has no deal and a different source; one copy is tagged `dq - duplicate`.
   - No contact has a phone number, and no two emails are exactly equal.
   - 32 contacts tagged `demo-data` + `sandbox` sit in the Sales Pipeline without `dash-project`. They were created 2026-09-01, use a source ("Instagram DM") no agency lead has, and 4 are Disqualified-but-won.
-  - "sohayla najib" (`demo@example.com`, company "Demo Company", deal "TEST - LeadPulse Website Inquiry", $100, no source) and "dane halt" (only gmail address, no source, no tag, $0, added 2026-10-30) are other students' test entries in the Sales Pipeline.
+  - Two other students' test entries sit in the Sales Pipeline (names withheld here): one with a `demo@example.com` address, company "Demo Company" and a deal named "TEST - LeadPulse Website Inquiry" ($100, no source); one with only a personal email, no source, no tag, $0, added 2026-10-30.
 - **Deal values (agency):** normal range $1,500–$12,000 in $250 steps, median $7,000. Six deals at exactly $145,000, two of them Closed/won (Facebook Ad, Instagram Ad). Nine at $0, one of them Closed/won (Webinar).
 - **Stage/status mismatch:** 2 agency deals are "Disqualified" with status "open" (both $0, Website Form).
-- An Excel explorer of the snapshot exists at `recon/GHL-data-explorer.xlsx`. Raw dumps live in `recon/raw/` (gitignored).
+- Raw dumps live in `recon/raw/` (gitignored).
 
 ## 6. Data pipeline (ETL) — decided
 
@@ -82,7 +82,7 @@ Before matching, text is normalised: lowercase, trimmed, internal spaces collaps
 | A1 | Not this agency's | Contact has no `dash-project` tag **and** no deal in the Sales Pipeline | Remove |
 | A2 | Demo record | Tag `demo-data` or `sandbox`, or the **whole word** "demo" in name, email, company, deal name or tags (so "Demos" and "Demolition" are *not* matched) | Remove |
 | A3 | Test record | Whole word "test", "dummy" or "fake" in name, email, company, deal name or tags (e.g. `leadpulse-test`, `backdate-test`) | Remove |
-| A3b | Unverified pipeline entry | In the Sales Pipeline but **no** `dash-project` tag **and** no source. Without the tag and a source it can't be attributed to any of the agency's channels; in the sandbox it is another user's manual entry (e.g. "dane halt"). *(Claude's call)* | Remove |
+| A3b | Unverified pipeline entry | In the Sales Pipeline but **no** `dash-project` tag **and** no source. Without the tag and a source it can't be attributed to any of the agency's channels; in the sandbox it is another user's manual entry. *(Claude's call)* | Remove |
 | A4 | Internal | Tag `internal` | Remove |
 | A5 | Duplicate | Same person, matched on any of: (a) normalised email where a trailing `.<digits>` before the `@` is ignored, but only when the base address also exists; (b) normalised phone digits; (c) normalised full name **and** the same company. Within a group, keep the record with a Sales Pipeline deal; then the furthest-advanced deal; then the earliest `dateAdded`. Remove the others, together with any deals they carry. Tag `dq - duplicate` also marks a record as the copy. | Remove copies |
 | A6 | Missing source | Agency record with a blank source | **Keep**, shown as "Unknown source" |
@@ -94,7 +94,7 @@ Before matching, text is normalised: lowercase, trimmed, internal spaces collaps
 
 **Source attribution:** contact `source` first, then the deal's `source`, otherwise "Unknown source".
 
-**Expected waterfall with today's data** (the builder must verify against the live data): 420 → 355 after A1 (−65) → 322 after A2 (−33: 32 demo-data + sohayla) → 322 after A3 (0) → 321 after A3b (−1: dane halt) → 306 after A4 (−15) → **294** after A5 (−12). Deals kept: 204. Values ignored under A7: 6 × $145,000 + 1 × $0 won = 7 deals. *(The grilling said "8": the earlier count included the sohayla $100 deal, which is now removed by A2.)*
+**Expected waterfall with today's data** (the builder must verify against the live data): 420 → 355 after A1 (−65) → 322 after A2 (−33: 32 demo-data + the "Demo Company" test entry) → 322 after A3 (0) → 321 after A3b (−1: the untagged, source-less test entry) → 306 after A4 (−15) → **294** after A5 (−12). Deals kept: 204. Values ignored under A7: 6 × $145,000 + 1 × $0 won = 7 deals. *(The grilling said "8": the earlier count included the "Demo Company" $100 deal, which is now removed by A2.)*
 
 ## 8. Health checks — batch-level (decided)
 

@@ -3,6 +3,6 @@
 node_modules/
 recon/raw/
 .vercel
-recon/*.xlsx
 public/data-raw/
 .superpowers/
+.claude/

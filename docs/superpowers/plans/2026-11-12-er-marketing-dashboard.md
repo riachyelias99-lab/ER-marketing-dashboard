@@ -168,7 +168,7 @@ git add .gitignore package.json vercel.json pipeline test docs recon/fetch.mjs
 git commit -m "chore: scaffold project, config and text helpers"
 ```
 
-Before committing, check `git status` shows no `.env`, no `recon/raw/` and no `.xlsx` (add `recon/*.xlsx` to `.gitignore`).
+Before committing, check `git status` shows no `.env` and no `recon/raw/`.
 
 ---
 
