@@ -1,0 +1,50 @@
+{
+  "status": {
+    "lastAttempt": "2026-11-14T16:48:48.224Z",
+    "lastSuccess": "2026-11-13T10:45:00.073Z",
+    "result": "fail",
+    "notes": [
+      "Today's update was paused because the data looked incomplete — showing data from Fri 13 Nov.",
+      "Incomplete download: 213 of 426 contacts and 294 of 294 deals arrived",
+      "Leads dropped from 294 to 124 since the last update"
+    ]
+  },
+  "checks": [
+    {
+      "id": "B1",
+      "level": "fail",
+      "ok": false,
+      "message": "Incomplete download: 213 of 426 contacts and 294 of 294 deals arrived"
+    },
+    {
+      "id": "B2",
+      "level": "fail",
+      "ok": true,
+      "message": "Sales Pipeline has the expected 8 stages"
+    },
+    {
+      "id": "B3",
+      "level": "fail",
+      "ok": false,
+      "message": "Leads dropped from 294 to 124 since the last update"
+    },
+    {
+      "id": "B4",
+      "level": "warn",
+      "ok": true,
+      "message": "No unfamiliar sources"
+    },
+    {
+      "id": "B5",
+      "level": "warn",
+      "ok": true,
+      "message": "Removal share is normal"
+    },
+    {
+      "id": "CONSISTENCY",
+      "level": "fail",
+      "ok": true,
+      "message": "All breakdowns add up to the totals"
+    }
+  ]
+}
