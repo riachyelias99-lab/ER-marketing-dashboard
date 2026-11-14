@@ -1,10 +1,6 @@
 {
-  "lastAttempt": "2026-11-14T16:48:48.224Z",
-  "lastSuccess": "2026-11-13T10:45:00.073Z",
-  "result": "fail",
-  "notes": [
-    "Today's update was paused because the data looked incomplete — showing data from Fri 13 Nov.",
-    "Incomplete download: 213 of 426 contacts and 294 of 294 deals arrived",
-    "Leads dropped from 294 to 124 since the last update"
-  ]
+  "lastAttempt": "2026-11-14T16:51:12.384Z",
+  "lastSuccess": "2026-11-14T16:51:12.384Z",
+  "result": "pass",
+  "notes": []
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-13T10:45:00.073Z",
+  "generatedAt": "2026-11-14T16:51:12.384Z",
   "mode": "clean",
   "stages": [
     "Qualified Opt In",
@@ -973,13 +973,13 @@
         "label": "All contacts in the sandbox",
         "reason": "Everything downloaded from GoHighLevel",
         "removed": 0,
-        "remaining": 420
+        "remaining": 426
       },
       {
         "rule": "A1",
         "label": "Not this agency's",
         "reason": "Belongs to another user of the shared sandbox",
-        "removed": 65,
+        "removed": 71,
         "remaining": 355
       },
       {
@@ -1634,7 +1634,7 @@
         "firstCaught": null
       }
     ],
-    "removedA1Count": 65,
+    "removedA1Count": 71,
     "annotations": {
       "stageStatusMismatch": 2,
       "unknownSource": 0,
@@ -1642,7 +1642,7 @@
       "orphanDeals": 0
     },
     "newSuspiciousCount": 0,
-    "newSince": "2026-11-06"
+    "newSince": "2026-11-07"
   },
   "health": {
     "result": "pass",
