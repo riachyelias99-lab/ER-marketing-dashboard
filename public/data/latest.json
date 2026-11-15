@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-14T16:51:12.384Z",
+  "generatedAt": "2026-11-15T12:02:27.616Z",
   "mode": "clean",
   "stages": [
     "Qualified Opt In",
@@ -1642,7 +1642,7 @@
       "orphanDeals": 0
     },
     "newSuspiciousCount": 0,
-    "newSince": "2026-11-07"
+    "newSince": "2026-11-08"
   },
   "health": {
     "result": "pass",
